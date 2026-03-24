@@ -1,0 +1,14 @@
+{
+  "misPersonajes": {
+    "1": {
+      "name": "Demitra",
+      "tags": ["Favorito"],
+      "characters": []
+    },
+    "2": {
+      "name": "Soyeon",
+      "tags": ["Nuevo"],
+      "characters": []
+    }
+  }
+}
