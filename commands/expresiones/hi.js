@@ -8,7 +8,7 @@ export default {
       // Solo continuar si hay menciones
       const mentions = Array.isArray(m.mentionedJid) ? m.mentionedJid : [];
       if (!mentions.length) {
-        return m.reply('❌ Debes mencionar a alguien para enviar un abrazo.');
+        return m.reply('❌ Debes mencionar a alguien para enviar un saludo.');
       }
 
       // React seguro
