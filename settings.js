@@ -60,7 +60,7 @@ global.authorCredit = '© DemiTeam';
 global.groupLink = 'https://chat.whatsapp.com/tu-link-grupo';
 global.communityLink = 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A';
 global.channelLink = 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A';
-global.gitHubRepo = 'https://github.com/zoredevteam-ctrl/Zore-two.git';
+global.gitHubRepo = 'https://github.com/jadeadaralove1/Demitrabot';
 global.emailContact = 'tvxuperlove@gmail.com';
 global.correo = 'tvxuperlove@gmail.com';
 
