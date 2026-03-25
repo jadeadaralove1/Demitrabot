@@ -40,7 +40,7 @@ global.welcom2 = '👋 Hasta luego. Tu ausencia no pasará desapercibida.\n🖤 
 
 global.banner = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
 global.bannerUrl = 'https://wallpapers.com/images/hd/zero-two-pictures-1j4mw86y6ncyfvj2.jpg';
-global.avatar = 'https://wallpapers.com/images/featured/zero-two-pictures-j468lgu4oedsxfla.jpg';
+global.avatar = 'https://files.catbox.moe/imfx2l.jpg';
 global.iconUrl = 'https://files.catbox.moe/glvart.jpg';
 global.catalogo = null;
 global.catalogImage = null;
