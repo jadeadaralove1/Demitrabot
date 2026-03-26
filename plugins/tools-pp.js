@@ -1,6 +1,6 @@
 let handler = async (m, { conn }) => {
     try {
-        await m.react('🍬')
+        await m.react('🐞')
 
         let who = m.mentionedJid[0] 
             ? m.mentionedJid[0] 
@@ -12,8 +12,8 @@ let handler = async (m, { conn }) => {
 
         let name = await conn.getName(who) || 'Darling'
 
-        let caption = `💗 *Foto de perfil de ${name}* 🌸\n\n` +
-                      `¡Mira qué cute darling\~! 💕`
+        let caption = `🦭 :: *Foto de perfil de ${name}*\n\n` +
+                      `¡Mira! 🪼`
 
         await conn.sendMessage(m.chat, {
             image: { url: pp },
@@ -21,16 +21,16 @@ let handler = async (m, { conn }) => {
             mentions: [who]
         }, { quoted: m })
 
-        await m.react('💗')
+        await m.react('🐞')
 
     } catch (e) {
         console.error('PP ERROR:', e)
         await m.react('💔')
-        m.reply('💔 Uy darling... no pude cargar la foto esta vez\~ Prueba otra vez')
+        m.reply('Demi no pudo cargar la foto esta vez Prueba otra vez' 😞)
     }
 }
 
-handler.help = ['pp @user', 'foto @user']
+handler.help = ['pfp @user', 'foto @user']
 handler.tags = ['tools']
 handler.command = ['pp', 'foto', 'profilepic', 'ppuser']
 
