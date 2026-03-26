@@ -1,6 +1,6 @@
 let handler = async (m, { conn, isAdmin, isOwner }) => {
-    if (!m.isGroup) return m.reply('💔 Solo funciona en grupos darling\~')
-    if (!isAdmin && !isOwner) return m.reply('💔 Solo admins y owner pueden usar este comando')
+    if (!m.isGroup) return m.reply('Solo funciona en grupos')
+    if (!isAdmin && !isOwner) return m.reply('Solo admins y owner pueden usar este comando')
 
     await m.react('⌛')
 
@@ -20,7 +20,7 @@ let handler = async (m, { conn, isAdmin, isOwner }) => {
 
     const buttonMessage = {
         text: txt,
-        footer: 'Zero Two Bot',
+        footer: 'Demitra Bot',
         buttons: [{
             buttonId: 'confirmar_eliminar_inactivos',
             buttonText: { displayText: 'Eliminar Inactivos' },
