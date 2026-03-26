@@ -18,7 +18,7 @@ let handler = async (m, { conn }) => {
 
         await conn.sendMessage(m.chat, {
             image: media,
-            caption: '💗 ¡Aquí tienes tu imagen darling!\nConvertido con todo mi amor de Zero Two 🌸'
+            caption: '> 𓈒  ׂ 🪼੭  ᮫   :  *Aquí tienes ૮(ˊ ᵔ ˋ)ა\n'
         }, { quoted: m })
 
         await m.react('💗')
