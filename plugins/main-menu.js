@@ -4,7 +4,7 @@ import { database } from '../lib/database.js'
 
 const handler = async (m, { conn }) => {
     try {
-        const botname = global.botname || global.botName || 'Zero Two'
+        const botname = global.botname || global.botName || 'Demitra'
         const pluginFiles = fs.readdirSync('./plugins').filter(file => file.endsWith('.js'))
         const grouped = {}
         for (const file of pluginFiles) {
@@ -28,8 +28,8 @@ const handler = async (m, { conn }) => {
         const registeredUsers = Object.values(database.data.users || {}).filter(u => u.registered).length
 
         let seccionesTexto = Object.entries(grouped).map(([tag, cmds]) =>
-`𖤐 *${tag.toUpperCase()}*
-${cmds.map(c => `  ꕦ ${c}`).join('\n')}
+`ᜊ *${tag.toUpperCase()}*
+${cmds.map(c => `  ♡ ${c}`).join('\n')}
 `
         ).join('\n')
 
@@ -48,15 +48,147 @@ ${cmds.map(c => `  ꕦ ${c}`).join('\n')}
             carita = '(◕‿◕✿) 🌙'
         }
 
-        let menuTexto = `𖤐 ❖ 𝐙𝐄𝐑𝐎 𝐓𝐖𝐎'𝐒 𝐌𝐄𝐍𝐔 ❖ 𖤐
-❝ ¡Hola *${m.pushName}*, ${saludo}~! ${carita}
-Soy *${botname}* y este es mi menú,
-más te vale usarlo bien... hmph 💗 ❞
-ꙮ *Comandos:* ${totalCmds} disponibles
-ꙮ *Usuarios:* ${totalUsers} conocidos
-ꙮ *Registrados:* ${registeredUsers} darlings
-${seccionesTexto}
-𖤐 *~Zero Two* 🌸 (´｡• ᵕ •｡\`)`.trim()
+        let menuTexto = `
+ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+橫㈵𓂂ㅤㅤ𓐮𝖣ۣؗ𝖤ۣؗ𝖬ۣؗ𝖨ۣؗ𝖳ۣؗ𝖱ۣؗ𝖠ㅤㅤ▞ㅤㅤ𓆭𓆭₂₈₎
+◯◯▸ㅤㅤ⎯⎯▬𝖫ؗOVEㅤㅤ🔘ㅤㅤ ▓█
+
+⟍𝄄𝄄𝄄𝄄𝄄₂₈₎ㅤㅤ 🔲ㅤㅤ#𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ⬤⬤⏋
+
+> ㅤㅤㅤㅤ﹫Demitra(Adara) ㅤㅤ𔘓
+
+*${m.pushName}*, ${saludo}! ${carita}
+
+
+ㅤ  𝗐𝖾𝗅𝖼𝗈𝗆𝖾ㅤ𝗌𝗈𝗒ㅤ𝗗᤻͟𝗲᤻͟𝗺᤻͟𝗶᤻͟𝗍᤻͟𝗋᤻͟𝗮᤻͟ㅤ𝗅𝖺ㅤ
+ㅤ     𝗌𝗈𝗇𝗋𝗂𝗌𝖺ㅤ𝗁𝖾𝖼𝗁𝖺ㅤ𝖼͟𝗈᤻͟𝖽⵿𝗂𝗀᤻͟𝗈
+
+ㅤ   𝖺ㅤ𝖼𝗈𝗇𝗍𝗂𝗇𝗎𝖺𝖼𝗂𝗈𝗇ㅤ𝗅𝖾ㅤ𝗆𝗎𝖾𝗌
+ㅤㅤ   -𝗍𝗋𝗈ㅤ𝗆𝗂𝗌ㅤ𝖼⵿𝗈͟𝗆᤻͟𝖺᤻͟𝗇᤻͟𝖽᤻͟𝗈⵿𝗌 ${totalCmds}
+
+＿＿／ ㅤㅤ ◢Principal + Main. ㅤㅤ  攤䥵𓌙
+
+.report / .reporte / .sug / .suggest
+.status / .estado
+.ping / .p
+.invite / .invitar
+.menu / .help / .allmenu
+
+＿＿／ ㅤ ㅤ     Perfil   ㅤ  攤䥵𓌙
+
+.profile / .perfil
+.setpasatiempo / .sethobby
+.setgenre
+.setdescription / .setdesc
+.marry / .casarse
+.divorce
+.delpasatiempo / .removehobby
+.delgenre
+.deldescription / .deldesc
+.afk
+
+＿＿／ ㅤ ㅤ ◢Groupㅤ ㅤ  攤䥵𓌙
+
+.todos / .invocar / .tagall
+.setwarnlimit
+.warn
+.delwarn
+.setgpdesc
+.setgpbanner
+.setgpname
+.revoke / .restablecer
+.welcome / .bienvenida
+.goodbye / .despedida
+.alerts / .alertas
+.antilink / .antienlaces / .antilinks
+.adminonly / .onlyadmin (on, off)
+.link
+.kick
+.hidetag / .tag
+.gp / .groupinfo
+.promote
+.demote
+.count / .mensajes / .messages / .msgcount
+.open / .abrir
+.close / .closet / .cerrar
+.bot
+
+＿＿／ ㅤ ㅤ ◢Stickers ㅤ ㅤ  攤䥵𓌙
+
+.sticker / .s
+.toimg / .toimage
+.brat
+.bratv
+.emojimix
+.qc
+
+＿＿／ ㅤ ㅤ ⊿ Utils ㅤ ㅤ  攤䥵𓌙
+.get / .fetch
+.pfp / .getpic
+.tourl
+.hd / .enhance / .remini
+.inspect / .inspeccionar
+.ver / .read / .readvo
+.say / .decir
+.translate / .trad / .traducir
+
+＿＿／ ㅤ ㅤ ◢Socket+ㅤ ㅤ  攤䥵𓌙
+
+.join / .unir
+.leave
+.logout
+.reload
+.self
+.codes / .qrs
+
+／ ㅤ ㅤ ◢ Descargas ㅤ ㅤ  攤䥵𓌙
+
+.ytsearch/search
+.tiktok/tt/tiktoksearch/ttsearch/tts
+.play2/mp4/ytmp4/ytvideo/playvideo
+.playmp3ytmp3ytaudio/playaudio
+.pinterest/pin
+.ig/instagram
+.apk/aptoide/apkdl
+
+／ ㅤ ㅤ ◢  Game ㅤ ㅤ  攤䥵𓌙
+
+.top
+.sopa/sopadeletras
+.rastrear
+.ppt
+.pedido
+.orcado/ahorcado
+.meme
+.formarpareja5
+.formarpareja/formarparejas
+.bot/demi
+.confesar/confesiones
+.adivina/adivinaemoji
+.acertijo/riddle
+
+／ ㅤ ㅤ ◢ Expresiones ㅤ ㅤ  攤䥵𓌙
+
+.hug/abrazo
+.happy/feliz
+.angry/enojado
+.airkiss/lanzarbeso/lanzarkiss
+.dance/bailar
+.hi/saludos
+
+> ㅤㅤㅤㅤ@𝗉𝗋𝗈𝗑𝗂𝗆𝗈ㅤㅤ𔘓
+
+
+
+▙▅▚ ㅤ ⇲𝖢ؗ𝖧ۣۤ𝖠ؗ𝖭ۖ𝖭ۤ𝖤ۣ𝖫ㅤ⦙⦙⦙◗ ㅤ 𓂧⁸⁶
+
+> https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A
+
+
+
+ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒𝗅
+ㅤ
+`.trim()
 
         const response = await fetch('https://causas-files.vercel.app/fl/9vs2.jpg')
         const buffer = await response.buffer()
@@ -65,7 +197,7 @@ ${seccionesTexto}
         await conn.sendMessage(m.chat, {
             document: buffer,
             mimetype: 'application/pdf',
-            fileName: `『 Zero Two Menu 』.pdf`,
+            fileName: `Demitra_botlove.pdf`,
             fileLength: 2199023255552,
             pageCount: 2026,
             caption: menuTexto,
@@ -74,16 +206,16 @@ ${seccionesTexto}
                 isForwarded: true,
                 forwardingScore: 999,
                 externalAdReply: {
-                    title: '𝐙𝐄𝐑𝐎 𝐓𝐖𝐎',
-                    body: 'darling~ 💗',
+                    title: 'Demibot',
+                    body: 'Demi',
                     mediaType: 1,
                     thumbnail: base64,
                     renderLargerThumbnail: true,
-                    sourceUrl: 'https://whatsapp.com/channel/0029Vb6p68rF6smrH4Jeay3Y'
+                    sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
                 },
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363404822730259@newsletter',
-                    newsletterName: '𝐙𝐄𝐑𝐎 𝐓𝐖𝐎',
+                    newsletterName: 'Demitra',
                     serverMessageId: -1
                 }
             }
@@ -91,7 +223,7 @@ ${seccionesTexto}
 
     } catch (e) {
         console.error(e)
-        m.reply('💔 Darling, algo salió mal al generar el menú... prueba de nuevo~')
+        m.reply('Demi dice que algo salió mal al generar el menú... prueba de nuevo.')
     }
 }
 
