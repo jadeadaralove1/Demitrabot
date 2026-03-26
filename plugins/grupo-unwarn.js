@@ -11,7 +11,7 @@ const handler = async (m, { conn, who }) => {
         target = m.quoted.sender
     }
 
-    if (!target) return m.reply('💗 Menciona o responde a alguien darling~')
+    if (!target) return m.reply('Menciona o responde a alguien')
 
     // Resolver LID a JID
     if (target.endsWith('@lid') || isNaN(target.split('@')[0])) {
@@ -25,11 +25,11 @@ const handler = async (m, { conn, who }) => {
     const warns = database.data.groups?.[groupId]?.warnings
 
     if (!warns || Object.keys(warns).length === 0) {
-        return m.reply('🌸 Nadie tiene advertencias en este grupo darling~')
+        return m.reply('Nadie tiene advertencias en este grupo darling')
     }
 
     if (!warns[target] || warns[target].count === 0) {
-        return m.reply('🌸 Este usuario no tiene advertencias darling~')
+        return m.reply('Este usuario no tiene advertencias darling')
     }
 
     warns[target].count--
@@ -41,13 +41,13 @@ const handler = async (m, { conn, who }) => {
 
     await conn.sendMessage(m.chat, {
         text:
-            `💗 *Advertencia quitada* 𖤐\n\n` +
+            `*Advertencia quitada* 𖤐\n\n` +
             `ꕦ Usuario: @${target.split('@')[0]}\n` +
-            `ꙮ Advertencias: *${warns[target]?.count || 0}/3*`,
+            `Advertencias: *${warns[target]?.count || 0}/3*`,
         mentions: [target]
     }, { quoted: m })
 
-    await m.react('🌸')
+    await m.react('🪼')
 }
 
 handler.help = ['unwarn @user']
