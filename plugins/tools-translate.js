@@ -14,7 +14,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         // El sistema detecta el idioma de origen automáticamente
         const result = await translate(text, { to: 'es', autoCorrect: true })
 
-        const response = `✨ *¡Traducción Completada, darling!* 🌸\n\n` +
+        const response = `᪤  ׅ🍒    ઇ𝗧𝗥𝗔𝗗𝗨𝗖𝗖𝗜𝗢𝗡३ׅ𓋜ֹֹ\n\n` +
                          `📝 *Texto original:* \n${text}\n\n` +
                          `✅ *Traducción:* \n${result.text}\n\n` +
                          `💕 _Traducido de: [${result.from.language.iso.toUpperCase()}]_`
