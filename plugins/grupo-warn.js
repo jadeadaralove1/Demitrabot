@@ -11,7 +11,7 @@ const handler = async (m, { conn, args, who }) => {
         target = m.quoted.sender
     }
 
-    if (!target) return m.reply('💗 Menciona o responde a alguien darling~')
+    if (!target) return m.reply('Menciona o responde a alguien')
 
     // Resolver LID a JID
     if (target.endsWith('@lid') || isNaN(target.split('@')[0])) {
@@ -30,7 +30,7 @@ const handler = async (m, { conn, args, who }) => {
 
     const ownerNums = global.owner.map(o => (Array.isArray(o) ? o[0] : o).replace(/\D/g, ''))
     if (ownerNums.includes(target.split('@')[0])) {
-        return m.reply('ꕦ No puedo advertir a un desarrollador de mi staff~ 𖤐')
+        return m.reply('No puedo advertir a un desarrollador de mi staff')
     }
 
     const reason = args.slice(1).join(' ') || 'Sin razón especificada'
@@ -45,11 +45,11 @@ const handler = async (m, { conn, args, who }) => {
     if (count >= 3) {
         await conn.sendMessage(m.chat, {
             text:
-                `𖤐 *¡ADVERTENCIA #${count}!* 𖤐\n\n` +
-                `ꕦ Usuario: @${target.split('@')[0]}\n` +
-                `ꕦ Razón: ${reason}\n\n` +
-                `💔 *Superó las 3 advertencias y fue expulsado...*\n` +
-                `Vuela lejos darling~ 🌸`,
+                `*¡ADVERTENCIA #${count}!*\n\n` +
+                `Usuario: @${target.split('@')[0]}\n` +
+                `Razón: ${reason}\n\n` +
+                `*Superó las 3 advertencias y fue expulsado...*\n` +
+                `Vuela lejos`,
             mentions: [target]
         }, { quoted: m })
 
@@ -64,16 +64,16 @@ const handler = async (m, { conn, args, who }) => {
     } else {
         await conn.sendMessage(m.chat, {
             text:
-                `𖤐 *¡ADVERTENCIA #${count}!* 𖤐\n\n` +
-                `ꕦ Usuario: @${target.split('@')[0]}\n` +
-                `ꕦ Razón: ${reason}\n\n` +
-                `ꙮ Advertencias: *${count}/3*\n` +
-                `💗 La próxima te vas volando darling~ 🌸`,
+                `*¡ADVERTENCIA #${count}!*\n\n` +
+                `Usuario: @${target.split('@')[0]}\n` +
+                `Razón: ${reason}\n\n` +
+                `Advertencias: *${count}/3*\n` +
+                `La próxima te vas volando darling`,
             mentions: [target]
         }, { quoted: m })
     }
 
-    await m.react('💗')
+    await m.react('🪼')
 }
 
 handler.help = ['advertir @user [razón]']
