@@ -40,13 +40,13 @@ let handler = async (m, { conn, args }) => {
 
         } catch (e) {
             console.error(e)
-            return m.reply('💔 Error al obtener info del canal, darling~')
+            return m.reply('Error al obtener info del canal')
         }
 
     } else if (groupUrl) {
         try {
             const info = await conn.groupGetInviteInfo(groupUrl).catch(() => null)
-            if (!info) return m.reply('💔 No encontré info del grupo, darling... verifica el enlace~')
+            if (!info) return m.reply('No encontré info del grupo, darling... verifica el enlace')
 
             const id = info.id || 'No encontrado'
             const nombre = info.subject || 'Sin nombre'
@@ -72,11 +72,11 @@ let handler = async (m, { conn, args }) => {
 
         } catch (e) {
             console.error(e)
-            return m.reply('💔 Error al obtener info del grupo, darling~')
+            return m.reply('Error al obtener info del grupo')
         }
 
     } else {
-        return m.reply('💔 No detecté un enlace válido de grupo, comunidad o canal, darling~')
+        return m.reply('No detecté un enlace válido de grupo, comunidad o canal')
     }
 
     await conn.sendMessage(m.chat, {
