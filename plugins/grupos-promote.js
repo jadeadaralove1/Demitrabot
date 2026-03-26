@@ -13,8 +13,7 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
     // ¡NUEVO! Validar que el bot tenga permisos de administrador
     if (!isBotAdmin) {
         await m.react('😞')
-        return m.reply('N
-ecesito ser administradora del grupo para poder dar o quitar poder~')
+        return m.reply('Necesito ser administradora del grupo para poder dar o quitar poder~')
     }
 
     let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : null
@@ -40,8 +39,8 @@ ecesito ser administradora del grupo para poder dar o quitar poder~')
         }
     } catch (e) {
         console.error(e)
-        await m.react('💔')
-        m.reply('💔 Uy darling... no pude cambiar el rol esta vez. Asegúrate de que no esté intentando modificar al creador del grupo~')
+        await m.react('😞')
+        m.reply('Uy... no pude cambiar el rol esta vez. Asegúrate de que no esté intentando modificar al creador del grupo')
     }
 }
 
