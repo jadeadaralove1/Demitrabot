@@ -190,7 +190,7 @@ ${cmds.map(c => `  ♡ ${c}`).join('\n')}
 ㅤ
 `.trim()
 
-        const response = await fetch('https://causas-files.vercel.app/fl/9vs2.jpg')
+        const response = await fetch('https://files.catbox.moe/q9rv7q.jpeg')
         const buffer = await response.buffer()
         const base64 = buffer.toString('base64')
 
