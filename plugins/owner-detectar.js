@@ -8,7 +8,7 @@ let handler = async (m, { conn }) => {
         const pluginsDir = './plugins'
         const files = fs.readdirSync(pluginsDir).filter(file => file.endsWith('.js'))
 
-        let response = `*Detección de Errores - DE MI BOT\n\n`
+        let response = `*Detección de Errores - DEMITRA BOT\n\n`
         response += `Revisando ${files.length} archivos...\n`
         response += `━━━━━━━━━━━━━━━━━━━\n\n`
 
