@@ -5,13 +5,13 @@ import { database } from '../lib/database.js'
 let handler = async (m, { conn }) => {
     const user = database.data.users[m.sender]
 
-    if (!user?.registered) return m.reply('💔 No estás registrado, darling~')
+    if (!user?.registered) return m.reply('No estás registrado')
 
     user.registered = false
     await database.save()
 
-    await m.reply('🌸 Tu registro fue eliminado, darling~\nHmph... espero que vuelvas pronto 💗')
-    await m.react('🌸')
+    await m.reply('Tu registro fue eliminado\nHmph... espero que vuelvas pronto')
+    await m.react('🐞')
 }
 
 handler.help = ['unreg']
