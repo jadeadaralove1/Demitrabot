@@ -26,7 +26,7 @@ let handler = async (m, { conn }) => {
     } catch (e) {
         console.error('PP ERROR:', e)
         await m.react('💔')
-        m.reply('Demi no pudo cargar la foto esta vez Prueba otra vez' 😞)
+        m.reply('Demi no pudo cargar la foto esta vez. Prueba otra vez 😞')
     }
 }
 
