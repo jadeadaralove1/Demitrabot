@@ -1,14 +1,14 @@
 import fetch from 'node-fetch'
 
 // Tu configuración
-const LINK_CANAL = 'https://whatsapp.com/channel/0029Vb6p68rF6smrH4Jeay3Y'
+const LINK_CANAL = 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
 const API_KEY = 'causa-ec43262f206b3305'
 
 let handler = async (m, { conn, args }) => {
     let url = args[0] || (m.quoted && m.quoted.text ? m.quoted.text.trim() : '')
 
     if (!url || !url.includes('tiktok.com')) {
-        return m.reply('💗 *Darling, necesito un link de TikTok.*\n\nEjemplo: `#enviartt https://vt.tiktok.com/...` o responde a un link con el comando.')
+        return m.reply('Necesito un link de TikTok.*\n\nEjemplo: `#enviartt https://vt.tiktok.com/...` o responde a un link con el comando.')
     }
 
     await m.react('⏳')
@@ -40,7 +40,7 @@ let handler = async (m, { conn, args }) => {
         // 3. Enviar al canal oficial
         await conn.sendMessage(JID_CANAL, {
             video: buffer,
-            caption: `💗 *TikTok de:* ${json.data.autor}\n📝 ${json.data.titulo}\n\n✨ _Enviado por Zero Two Bot_`,
+            caption: `*TikTok de:* ${json.data.autor}\n📝 ${json.data.titulo}\n\n✨ _Enviado por Demitrabot_`,
             mimetype: 'video/mp4',
             fileName: `video.mp4`
         })
@@ -51,7 +51,7 @@ let handler = async (m, { conn, args }) => {
     } catch (e) {
         console.error(e)
         await m.react('❌')
-        m.reply(`💔 *Error:* ${e.message || e}\n\n_Revisa que la Bot sea Administradora en el canal._`)
+        m.reply(`*Error:* ${e.message || e}\n\n_Revisa que la Bot sea Administradora en el canal._`)
     }
 }
 
