@@ -12,7 +12,7 @@ let handler = async (m, { conn }) => {
 
         if (participants.length < 10) {
             await m.react('🐢')
-            return m.reply('💗Necesitamos mínimo 10 personas en el grupo para formar las 5 mejores parejas')
+            return m.reply('Necesitamos mínimo 10 personas en el grupo para formar las 5 mejores parejas')
         }
 
         // Mezclamos y tomamos 10 personas diferentes
