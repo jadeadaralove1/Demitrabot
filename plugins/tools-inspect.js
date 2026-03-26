@@ -10,7 +10,7 @@ let handler = async (m, { conn, args }) => {
 
     let caption = ''
     let thumb = icons
-    let sourceUrl = 'https://github.com/zoredevteam-ctrl/Zore-two'
+    let sourceUrl = 'https://github.com/jadeadaralove1/Demitrabot'
 
     if (channelUrl) {
         try {
