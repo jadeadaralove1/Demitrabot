@@ -1,5 +1,5 @@
 let handler = async (m) => {
-    await m.react('🍬')
+    await m.react('🐢')
 
     const now = new Date()
 
@@ -11,7 +11,7 @@ let handler = async (m) => {
         { name: 'EEUU (Miami)', tz: 'America/New_York' }
     ]
 
-    let texto = `💗 *HORA ACTUAL EN DIFERENTES ZONAS* 🌸\n\n`
+    let texto = `*HORA ACTUAL EN DIFERENTES ZONAS*\n\n`
 
     zonas.forEach(z => {
         const hora = now.toLocaleTimeString('es-ES', { 
@@ -21,7 +21,7 @@ let handler = async (m) => {
         texto += `🕒 *${z.name}:* ${hora}\n`
     })
 
-    texto += `\n¡Zero Two siempre está despierta contigo darling\~! 💕`
+    texto += `\n¡Demitra siempre está despierta`
 
     return m.reply(texto)
 }
