@@ -1,36 +1,22 @@
 import speed from 'performance-now'
 import { exec } from 'child_process'
 
-export default {
-  command: ['ping', 'p'],
-  category: 'info',
-  run: async (client, m) => {
-    const start = speed()
+let handler = async (m, { conn }) => {
+    let timestamp = speed()
+    let sentMsg = await m.reply('Hmph... calculando.')
+    let latency = speed() - timestamp
 
-    const sent = await client.sendMessage(
-      m.chat,
-      {
-        text: `❏ ¡Pong!\n> *${global.db.data.settings[client.user.id.split(':')[0] + "@s.whatsapp.net"].namebot}*`
-      },
-      { quoted: m }
-    )
+    exec('neofetch --stdout', (error, stdout, stderr) => {
+        let child = stdout.toString('utf-8')
+        let ssd = child.replace(/Memory:/, 'Ram:')
 
-    const latency = (speed() - start).toFixed(4).split('.')[0]
-
-    exec('neofetch --stdout', (error, stdout) => {
-      let systemInfo = stdout.toString('utf-8').replace(/Memory:/, 'Ram:')
-
-      client.sendMessage(
-        m.chat,
-        {
-          text: `⭐⃞░  *Pong!* (꜆˶ᵔᵕᵔ˶)꜆
-> Tiempo ⌛ ${latency}ms
-
-${systemInfo}`,
-          edit: sent.key
-        },
-        { quoted: m }
-      )
+        let result = `*¡PONG!* \n💢 Velocidad ⴵ ${latency.toFixed(4).split('.')[0]}ms\n${ssd}`
+        conn.sendMessage(m.chat, { text: result, edit: sentMsg.key }, { quoted: m })
     })
-  },
 }
+
+handler.help = ['ping']
+handler.tags = ['main']
+handler.command = ['ping']
+
+export default handler
