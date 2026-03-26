@@ -6,7 +6,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
   try {
     if (!text) {
       return m.reply(
-        `♡ Darling... pásame un enlace de grupo 💗\n\nEjemplo:\n${usedPrefix}join https://chat.whatsapp.com/ABCDEFGHIJK123456789 7`
+        `♡ Pásame un enlace de grupo\n\nEjemplo:\n${usedPrefix}join https://chat.whatsapp.com/ABCDEFGHIJK123456789 7`
       )
     }
 
@@ -14,7 +14,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
     let match = text.match(linkRegex)
     if (!match) {
       return m.reply(
-        '♡ Mmm... ese enlace no parece válido 💔\nAsegúrate que sea un enlace de WhatsApp'
+        '♡ Mmm... ese enlace no parece válido \nAsegúrate que sea un enlace de WhatsApp'
       )
     }
 
@@ -40,17 +40,17 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
       let msg = err?.message || ''
 
       if (msg.includes('already')) {
-        return m.reply('♡ Ya estoy en ese grupo, Darling 💗')
+        return m.reply('♡ Ya estoy en ese grupo')
       }
       if (msg.includes('expired') || msg.includes('invalid')) {
-        return m.reply('♡ El enlace está expirado o inválido 💔')
+        return m.reply('♡ El enlace está expirado o inválido')
       }
 
       throw err
     }
 
     if (!groupId || !groupId.endsWith('@g.us')) {
-      return m.reply('♡ No obtuve un ID válido 💔')
+      return m.reply('♡ No obtuve un ID válido')
     }
 
     // 📛 Nombre del grupo
@@ -77,18 +77,18 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
 
     // ✅ Confirmación
     await m.reply(
-      `♡ Ya entré a *${groupName}* 💗\n` +
+      `♡ Ya entré a *${groupName}*\n` +
       (days
-        ? `Me quedaré ${days} día(s) contigo~`
-        : 'Me quedaré para siempre contigo, Darling ♡')
+        ? `Me quedaré ${days} día(s)`
+        : 'Me quedaré para siempre')
     )
 
     // 🎬 Bienvenida
     let media = 'https://files.catbox.moe/sjak3i.jpg'
 
-    let welcomeText = `╭━━━〔 ♡ 𝒁𝒆𝒓𝒐 𝑻𝒘𝒐 ♡ 〕━━━⬣
-┃ ❥ Ya llegué, Darling... 💗
-┃ ❥ Ahora este grupo es más divertido~
+    let welcomeText = `╭━━━〔 ♡ Demitra BOT ♡ 〕━━━⬣
+┃ ❥ Ya llegué... 
+┃ ❥ Ahora este grupo es más divertido
 ┃ ❥ Llámame si me necesitas ♡
 ╰━━━━━━━━━━━━━━━━⬣`
 
@@ -102,7 +102,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
   } catch (e) {
     console.error('[join]', e)
 
-    let msg = '♡ No pude entrar... 💔\n'
+    let msg = '♡ No pude entrar...\n'
     let errMsg = e?.message || ''
 
     if (errMsg.includes('already')) msg += 'Ya estoy en ese grupo~'
