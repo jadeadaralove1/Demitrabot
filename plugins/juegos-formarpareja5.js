@@ -1,18 +1,18 @@
 let handler = async (m, { conn }) => {
     if (!m.isGroup) {
         await m.react('💔')
-        return m.reply('💔 Este comando solo funciona en grupos darling\~')
+        return m.reply('Este comando solo funciona en grupos')
     }
 
-    await m.react('🍬')
+    await m.react('🐢')
 
     try {
         const group = await conn.groupMetadata(m.chat)
         let participants = group.participants.map(v => v.id)
 
         if (participants.length < 10) {
-            await m.react('🌸')
-            return m.reply('💗 Necesitamos mínimo 10 personas en el grupo para formar las 5 mejores parejas\~')
+            await m.react('🐢')
+            return m.reply('💗Necesitamos mínimo 10 personas en el grupo para formar las 5 mejores parejas')
         }
 
         // Mezclamos y tomamos 10 personas diferentes
@@ -38,12 +38,12 @@ let handler = async (m, { conn }) => {
             mentions: p
         }, { quoted: m })
 
-        await m.react('💗')
+        await m.react('🦭')
 
     } catch (e) {
         console.error('❌ FORMARPAREJA5 ERROR:', e)
-        await m.react('💔')
-        m.reply('💔 Uy darling... no pude formar las parejas esta vez\~\nInténtalo otra vez no me dejes sola 🌸')
+        await m.react('😞')
+        m.reply('Uy... no pude formar las parejas esta vez\~\nInténtalo otra vez no me dejes sola')
     }
 }
 
