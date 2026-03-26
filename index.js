@@ -342,7 +342,7 @@ async function startBot () {
     }
 
     if (connection === 'open') {
-      console.log(zeroBanner)
+      console.log("Bot iniciado")
       log.success(`Conectado como: ${conn.user?.name || 'Desconocido'}`)
       log.info(`Plugins cargados: ${plugins.size}`)
       await loadEvents(conn)
