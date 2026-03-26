@@ -12,7 +12,6 @@ const handler = async (m, { args, prefix }) => {
         goodbye:  '👋 *Goodbye*',
         antilink: '🔗 *Antilink*',
         antispam: '🚫 *Antispam*',
-        nsfw:     '🔞 *NSFW*',
     }
 
     if (!feature || !features[feature]) {
