@@ -1,4 +1,4 @@
-import { database } from './lib/database.js'
+import { database } from '../lib/database.js'
 
 let handler = async (m, { conn, args, prefix, command, isOwner }) => {
 
@@ -13,7 +13,7 @@ let handler = async (m, { conn, args, prefix, command, isOwner }) => {
         let action = args[0]?.toLowerCase()
 
         if (action !== 'on' && action !== 'off') {
-            return m.reply(`✦ 𝓩𝓮𝓻𝓸 𝓣𝔀𝓸\n\n⚠️ Uso incorrecto, darling.\nEjemplo: *${prefix + command} on* o *${prefix + command} off*`)
+            return m.reply(`Demitra\n\n⚠️ Uso incorrecto, darling.\nEjemplo: *${prefix + command} on* o *${prefix + command} off*`)
         }
 
         if (!database.data.groups) database.data.groups = {}
@@ -22,13 +22,17 @@ let handler = async (m, { conn, args, prefix, command, isOwner }) => {
         const estado = action === 'on'
         database.data.groups[m.chat].bot = estado
 
-        if (!estado) return
+        await database.save()
 
-        await m.reply('✦ 𝓩𝓮𝓻𝓸 𝓣𝔀𝓸\n\n✅ *Bot activado*\nAhora responderé a todos en este grupo, darling~')
+        if (!estado) {
+            await m.reply('Demitra\n\n❌ *Bot desactivado*\nNo responderé en este grupo.')
+            await m.react('❌')
+            return
+        }
+
+        await m.reply('Demitra\n\n✅ *Bot activado*\nAhora responderé a todos en este grupo.')
         await m.react('✅')
-        return
     }
-
 }
 
 handler.help = ['bot on', 'bot off']
