@@ -18,9 +18,11 @@ let handler = async (m, { conn, args }) => {
       'https://telegra.ph/file/24fa902ead26340f3df2c.png'
     )
 
-    const nombre =
-      globalThis.db?.data?.users?.[target]?.name ||
-      target.split('@')[0]
+    let nombre = m.quoted
+  ? (m.quoted.pushName || m.quoted.name || 'Usuario')
+  : (m.pushName || 'Usuario')
+
+if (/^\d+$/.test(nombre)) nombre = 'Usuario'
 
     if (textFinal.length > 30) {
       await m.react('✖️')
