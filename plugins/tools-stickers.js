@@ -1,144 +1,170 @@
 import fs from 'fs'
 import { spawn } from 'child_process'
 import fetch from 'node-fetch'
-import exif from '../lib/exif.js'
+import { Sticker, StickerTypes } from 'wa-sticker-formatter'
+import { downloadMediaMessage } from '@whiskeysockets/baileys'
 
-const { writeExif } = exif
-
-let handler = async (m, { conn, args, prefix, command }) => {
-  try {
-
-    // ✅ Crear carpeta tmp si no existe
-    if (!fs.existsSync('./tmp')) fs.mkdirSync('./tmp')
-
-    if (args[0] === '-list') {
-      let helpText = `♡ Lista de Formas y Efectos Disponibles para *imagen*:\n\nᜊ *Formas:*\n- -c : Círculo\n- -t : Triángulo\n- -s : Estrella\n- -r : Redondeado\n- -h : Hexágono\n- -d : Diamante\n- -f : Marco\n- -b : Borde\n- -w : Onda\n- -m : Espejo\n- -o : Octágono\n- -y : Pentágono\n- -e : Elipse\n- -z : Cruz\n- -v : Corazón\n- -x : Cover\n- -i : Contain\n\n✧ *Efectos:*\n- -blur -sepia -sharpen -brighten -darken -invert -grayscale -rotate90 -rotate180 -flip -flop -normalice -negate -tint\n\n> Ejemplo: *${prefix + command} -c -blur Pack | Autor*`
-      return m.reply(helpText)
-    }
-
-    const quoted = m.quoted ? m.quoted : m
-    const mime = (quoted.msg || quoted).mimetype || ''
-
-    let user = global.db.data.users[m.sender] || {}
-    let name = user.name || 'User'
-
-    let texto1 = user.metadatos || `Demitrabot`
-    let texto2 = user.metadatos2 || `@${name}`
-
-    let urlArg = null
-    let argsWithoutUrl = []
-
-    for (let arg of args) {
-      if (isUrl(arg)) urlArg = arg
-      else argsWithoutUrl.push(arg)
-    }
-
-    let filteredText = argsWithoutUrl.join(' ').replace(/-\w+/g, '').trim()
-    let marca = filteredText.split(/[\u2022|]/).map(v => v.trim())
-
-    let pack = marca[0] || texto1
-    let author = marca[1] || texto2
-
-    const shapeArgs = { '-c':'circle','-t':'triangle','-s':'star','-r':'roundrect','-h':'hexagon','-d':'diamond','-f':'frame','-b':'border','-w':'wave','-m':'mirror','-o':'octagon','-y':'pentagon','-e':'ellipse','-z':'cross','-v':'heart','-x':'cover','-i':'contain' }
-
-    const effectArgs = { '-blur':'blur','-sepia':'sepia','-sharpen':'sharpen','-brighten':'brighten','-darken':'darken','-invert':'invert','-grayscale':'grayscale','-rotate90':'rotate90','-rotate180':'rotate180','-flip':'flip','-flop':'flop','-normalice':'normalise','-negate':'negate','-tint':'tint' }
-
-    const effects = []
-
-    for (const arg of argsWithoutUrl) {
-      if (shapeArgs[arg]) effects.push({ type:'shape', value:shapeArgs[arg] })
-      else if (effectArgs[arg]) effects.push({ type:'effect', value:effectArgs[arg] })
-    }
-
-    const sendWebpWithExif = async (buffer) => {
-  if (!buffer || !Buffer.isBuffer(buffer)) {
-    return m.reply('❌ Error: No se pudo procesar el archivo correctamente')
-  }
-  const media = { mimetype: 'webp', data: buffer }
-  const metadata = { packname: pack, author: author, categories: [''] }
-  const stickerPath = await writeExif(media, metadata)
-
-  await conn.sendMessage(m.chat, { sticker: { url: stickerPath } }, { quoted: m })
-  fs.unlinkSync(stickerPath)
-}
-
-      await new Promise((resolve, reject) => {
-        const p = spawn('ffmpeg', ['-y','-i',inputPath,'-vf',vf,'-c:v','libwebp','-q:v','70','-loop','0',outputPath])
-
-        // ✅ Mejor manejo de error
-        p.on('close', code => {
-          if (code === 0) resolve()
-          else reject(new Error('FFmpeg falló'))
-        })
-      })
-
-      const buffer = fs.readFileSync(outputPath)
-      fs.unlinkSync(outputPath)
-
-      await sendWebpWithExif(buffer)
-    }
-
-    // 📸 IMAGEN
-    if (/image/.test(mime)) {
-      let buffer = await quoted.download()
-      const input = `./tmp/${Date.now()}.jpg`
-
-      fs.writeFileSync(input, buffer)
-      await process(input)
-      fs.unlinkSync(input)
-
-    // 🎥 VIDEO
-    } else if (/video/.test(mime)) {
-
-      if ((quoted.msg || quoted).seconds > 20) {
-        return m.reply('《✧》 El video no puede ser muy largo')
-      }
-
-      let buffer = await quoted.download()
-      const input = `./tmp/${Date.now()}.mp4`
-
-      fs.writeFileSync(input, buffer)
-      await process(input)
-      fs.unlinkSync(input)
-
-    // 🌐 URL
-    } else if (urlArg) {
-
-      const res = await fetch(urlArg)
-      if (!res.ok) return m.reply('《✧》 No pude descargar ese archivo')
-
-      const buffer = Buffer.from(await res.arrayBuffer())
-      const input = `./tmp/${Date.now()}.jpg`
-
-      fs.writeFileSync(input, buffer)
-      await process(input)
-      fs.unlinkSync(input)
-
-    } else {
-      return m.reply(`《✧》 Envía imagen/video o URL\n> Usa *${prefix + command} -list*`)
-    }
-
-  } catch (e) {
-    m.reply(`❌ Error:\n${e.message}`)
-  }
-}
-
-handler.command = ['sticker', 's']
-handler.category = 'utils'
-
-export default handler
-
-const isUrl = (text='') => /https?:\/\//.test(text)
+const isUrl = (text = '') => /https?:\/\//.test(text)
 
 const buildFFmpegFilters = (effects) => {
-  let filters = ['scale=512:512:force_original_aspect_ratio=decrease','pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000']
+    let filters = [
+        'scale=512:512:force_original_aspect_ratio=decrease',
+        'pad=512:512:(ow-iw)/2:(oh-ih)/2:color=0x00000000'
+    ]
 
-  for (let e of effects) {
-    if (e.value === 'grayscale') filters.push('hue=s=0')
-    if (e.value === 'invert') filters.push('negate')
-    if (e.value === 'blur') filters.push('gblur=sigma=5')
-  }
+    for (let e of effects) {
+        if (e.value === 'grayscale') filters.push('hue=s=0')
+        if (e.value === 'invert') filters.push('negate')
+        if (e.value === 'blur') filters.push('gblur=sigma=5')
+    }
 
-  filters.push('format=yuva420p')
-  return filters.join(',')
+    filters.push('format=yuva420p')
+    return filters.join(',')
 }
+
+let handler = async (m, { conn, args, prefix, command }) => {
+    let q = m.quoted ? m.quoted : m
+    let mime = (q.msg || q).mimetype || q.mimetype || ''
+
+    if (!fs.existsSync('./tmp')) fs.mkdirSync('./tmp')
+
+    const shapeArgs = {
+        '-c':'circle',
+        '-t':'triangle',
+        '-s':'star',
+        '-r':'roundrect',
+        '-h':'hexagon',
+        '-d':'diamond',
+        '-f':'frame',
+        '-b':'border',
+        '-w':'wave',
+        '-m':'mirror',
+        '-o':'octagon',
+        '-y':'pentagon',
+        '-e':'ellipse',
+        '-z':'cross',
+        '-v':'heart',
+        '-x':'cover',
+        '-i':'contain'
+    }
+
+    const effectArgs = {
+        '-blur':'blur',
+        '-invert':'invert',
+        '-grayscale':'grayscale'
+    }
+
+    if (args[0] === '-list') {
+        return m.reply(`♡ Lista disponible:
+
+Formas:
+- -c círculo
+- -t triángulo
+- -s estrella
+- -r redondeado
+- -h hexágono
+- -d diamante
+- -v corazón
+
+Efectos:
+- -blur
+- -invert
+- -grayscale
+
+Ejemplo:
+${prefix + command} -c -blur Pack | Autor`)
+    }
+
+    if (!mime && !args.find(isUrl)) {
+        return m.reply(`Responde una imagen/video o manda URL`)
+    }
+
+    await m.react('🪻')
+
+    try {
+        let media
+
+        let urlArg = args.find(isUrl)
+
+        if (urlArg) {
+            let res = await fetch(urlArg)
+            media = Buffer.from(await res.arrayBuffer())
+        } else {
+            media = await downloadMediaMessage(q, 'buffer', {}, {
+                reuploadRequest: conn.updateMediaMessage
+            })
+        }
+
+        let effects = []
+        let shape = null
+
+        for (let arg of args) {
+            if (shapeArgs[arg]) shape = shapeArgs[arg]
+            if (effectArgs[arg]) effects.push({ value: effectArgs[arg] })
+        }
+
+        let packText = args.join(' ').replace(/-\w+/g, '').trim()
+        let split = packText.split('|').map(v => v.trim())
+
+        let pack = split[0] || global.packname || 'Demitra bot'
+        let author = split[1] || global.author || '© Demitra bot'
+
+        let finalBuffer = media
+
+        if (effects.length > 0) {
+            const input = `./tmp/${Date.now()}.jpg`
+            const output = `./tmp/${Date.now()}.webp`
+
+            fs.writeFileSync(input, media)
+
+            const vf = buildFFmpegFilters(effects)
+
+            await new Promise((resolve, reject) => {
+                const ff = spawn('ffmpeg', [
+                    '-y',
+                    '-i', input,
+                    '-vf', vf,
+                    '-c:v', 'libwebp',
+                    '-q:v', '70',
+                    '-loop', '0',
+                    output
+                ])
+
+                ff.on('close', code => {
+                    if (code === 0) resolve()
+                    else reject(new Error('FFmpeg falló'))
+                })
+            })
+
+            finalBuffer = fs.readFileSync(output)
+
+            fs.unlinkSync(input)
+            fs.unlinkSync(output)
+        }
+
+        const sticker = new Sticker(finalBuffer, {
+            pack,
+            author,
+            type: StickerTypes.FULL,
+            categories: ['🐞'],
+            quality: 75,
+            ...(shape ? { background: 'transparent', crop: shape } : {})
+        })
+
+        const buffer = await sticker.toBuffer()
+
+        await conn.sendMessage(m.chat, { sticker: buffer }, { quoted: m })
+        await m.react('🐞')
+
+    } catch (e) {
+        console.error('❌ STICKER ERROR:', e)
+        await m.react('😞')
+        m.reply(`❌ Error:\n${e.message}`)
+    }
+}
+
+handler.help = ['s', 'sticker']
+handler.tags = ['stickers']
+handler.command = ['s', 'sticker']
+
+export default handler
