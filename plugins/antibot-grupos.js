@@ -70,7 +70,7 @@ const registerAntiBotEvent = () => {
                     await global.conn.groupParticipantsUpdate(id, [participant], 'remove')
 
                     const kickText = `¡BOT DETECTADO Y EXPULSADO!*\n\n` +
-                        `¡No quiero ningún robot imitador!! 💢😠\n` +
+                        `◜࣭࣭࣭࣭࣭᷼💢̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  : ¡𝗡O 𝗤UIERO 𝗡INGÚN 𝗕OT 𝗜MITADO. ◜😠!\n` +
                         `Solo acepto humanos de verdad... ¡tú no eres real!\n\n` +
                         `¡Fuera de aquí @${number} ! Vuelve cuando seas una persona de carne y hueso`
 
