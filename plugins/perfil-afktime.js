@@ -1,14 +1,68 @@
-let handler = async (m, { conn }) => {
-  // ✅ Inicializar DB
+import fetch from 'node-fetch'
+
+/** Comando AFK */
+export const afkHandler = async (m, { conn, args }) => {
   global.db = global.db || {}
   global.db.data = global.db.data || {}
-  global.db.data.chats = global.db.data.chats || {}
-  const chat = global.db.data.chats[m.chat] ||= {}
-  const chatUsers = chat.users ||= {}
-  const user = chatUsers[m.sender] ||= {}
-  global.db.data.users[m.sender] ||= {}
+  global.db.data.users = global.db.data.users || {}
+  const user = global.db.data.users[m.sender] ||= {}
 
-  const formatTiempo = (ms) => {
+  // Guardar estado AFK
+  user.afk = Date.now()
+  user.afkReason = args.join(' ') || 'Sin especificar!'
+
+  // Preparar thumbnail
+  let thumb = null
+  try {
+    thumb = await (await fetch("https://i.postimg.cc/rFfVL8Ps/image.jpg")).buffer()
+  } catch { thumb = null }
+
+  const shadow_xyz = {
+    key: {
+      remoteJid: "status@broadcast",
+      fromMe: false,
+      id: "ShadowCatalog",
+      participant: "0@s.whatsapp.net"
+    },
+    message: {
+      productMessage: {
+        product: {
+          productImage: thumb ? { mimetype: "image/jpeg", jpegThumbnail: thumb } : undefined,
+          title: "WhatsApp Business • Estado",
+          description: "Shadow team",
+          currencyCode: "USD",
+          priceAmount1000: 0,
+          retailerId: "ShadowCore",
+          productImageCount: 1
+        },
+        businessOwnerJid: "584242773183@s.whatsapp.net"
+      }
+    }
+  }
+
+  await conn.sendMessage(
+    m.chat,
+    {
+      text: `🌌 *Discípulo de las Sombras*\nHas entrado en estado AFK.\n○ Motivo » *${user.afkReason}*`,
+      mentions: [m.sender]
+    },
+    { quoted: shadow_xyz }
+  )
+}
+
+afkHandler.help = ['afk [razón]']
+afkHandler.tags = ['tools']
+afkHandler.command = ['afk']
+
+/** Handler BEFORE: desactiva AFK y avisa menciones */
+export const afkBefore = async (m, { conn }) => {
+  global.db = global.db || {}
+  global.db.data = global.db.data || {}
+  global.db.data.users = global.db.data.users || {}
+
+  const user = global.db.data.users[m.sender] ||= {}
+
+  const formatTiempo = ms => {
     if (typeof ms !== 'number' || isNaN(ms)) return 'desconocido'
     const h = Math.floor(ms / 3600000)
     const min = Math.floor((ms % 3600000) / 60000)
@@ -20,43 +74,34 @@ let handler = async (m, { conn }) => {
     return parts.join(' ')
   }
 
-  // ───── SALIR DE AFK ─────
+  // 🔹 Salir de AFK automáticamente
   if (typeof user.afk === 'number' && user.afk > -1) {
     const ms = Date.now() - user.afk
     const tiempo = formatTiempo(ms)
     await conn.sendMessage(m.chat, {
-      text: `🧚‍♀️ ❚ ❘ *${global.db.data.users[m.sender]?.name || 'Usuario'}* ha regresado del AFK.
-╭━━━〔 ✦ AFK OFF ✦ 〕━━━⬣
-┃ ⭐⃞░ Motivo » *${user.afkReason || 'sin especificar'}*
-┃ ⏳ Tiempo ausente » *${tiempo}*
-╰━━━━━━━━━━━━━━━━⬣`,
+      text: `🌑 *Discípulo de las Sombras*\nHas regresado del AFK.\n○ Motivo » *${user.afkReason || 'sin especificar'}*\n○ Tiempo ausente » *${tiempo}*`,
       mentions: [m.sender]
     }, { quoted: m })
+
     user.afk = -1
     user.afkReason = ''
   }
 
-  // ───── DETECTAR MENCIONES ─────
-  const mentioned = m.mentionedJid || []
-  const quoted = m.quoted ? m.quoted.sender : null
-  const jids = [...new Set([...mentioned, quoted].filter(j => j && j.endsWith('@s.whatsapp.net') && j !== 'status@broadcast'))]
+  // 🔹 Avisar si menciona a alguien AFK
+  const mentionedJid = Array.isArray(m.mentionedJid) ? m.mentionedJid : []
+  const quoted = m.quoted?.sender ? [m.quoted.sender] : []
+  const jids = [...new Set([...mentionedJid, ...quoted].filter(j => j && j.endsWith('@s.whatsapp.net') && j !== 'status@broadcast'))]
 
-  // ───── AVISO AFK ─────
   for (const jid of jids) {
-    const target = chatUsers[jid]
+    const target = global.db.data.users[jid]
     if (!target || typeof target.afk !== 'number' || target.afk < 0) continue
+
     const ms = Date.now() - target.afk
     const tiempo = formatTiempo(ms)
+
     await conn.sendMessage(m.chat, {
-      text: `🧚‍♀️ ❚ ❘ *${global.db.data.users[jid]?.name || 'Usuario'}* está AFK.
-╭━━━〔 ✦ AFK ✦ 〕━━━⬣
-┃ ⭐⃞░ Motivo » *${target.afkReason || 'sin especificar'}*
-┃ ⏳ Tiempo ausente » *${tiempo}*
-╰━━━━━━━━━━━━━━⬣`,
+      text: `🌌 *Invocación Sombría*\nEl usuario *${await conn.getName(jid)}* está AFK.\n○ Motivo: ${target.afkReason || 'sin especificar'}\n○ Tiempo ausente: *${tiempo}*`,
       mentions: [jid]
     }, { quoted: m })
   }
 }
-
-handler.before = true
-export default handler
