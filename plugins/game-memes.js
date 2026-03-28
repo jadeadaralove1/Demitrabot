@@ -1,4 +1,4 @@
-// handler-meme-pro.js
+// handler-meme-pro-simple.js
 
 // Lista de memes en Catbox (links directos)
 let memes = [
@@ -14,45 +14,25 @@ let memePool = [...memes];
 
 let handler = async (m, { conn }) => {
   try {
-    // Si el pool se vacía, recargarlo
+    // Recargar el pool si se vacía
     if (memePool.length === 0) memePool = [...memes];
 
-    // Elegir un meme aleatorio del pool
+    // Elegir un meme aleatorio del pool y removerlo
     const index = Math.floor(Math.random() * memePool.length);
-    const randomMeme = memePool.splice(index, 1)[0]; // Lo removemos para no repetir
+    const randomMeme = memePool.splice(index, 1)[0];
 
-    const wm = (typeof global !== 'undefined' && global.wm) ? global.wm : 'Shadow-BOT-MD ⚔️';
-    const bot = 'Shadow-BOT-MD ⚔️';
-
-    let fkontak = {
-      key: { participants: '0@s.whatsapp.net', remoteJid: 'status@broadcast', fromMe: false, id: 'Halo' },
-      message: {
-        contactMessage: {
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-        }
-      },
-      participant: '0@s.whatsapp.net'
-    };
-
-    let caption = `☽ 『 Shadow Garden Memes 』 ☽
+    const caption = `☽ 『 Shadow Garden Memes 』 ☽
 
 🧠 Aquí tienes un meme en español invocado desde las sombras...
 ✦ Que la risa ilumine tu noche oscura.`;
 
-    // Enviar meme con botones
-    await conn.sendButton(
-      m.chat,
+    // Enviar imagen o video directamente
+    await conn.sendMessage(m.chat, {
       caption,
-      wm,
-      randomMeme || 'https://files.catbox.moe/default.jpg', // fallback
-      [
-        ['☽ Siguiente meme ☽', '.meme'],
-        ['☽ Volver al Menú ☽', '/menu']
-      ],
-      null,
-      [[bot, 'https://whatsapp.com/channel/0029VbArz9fAO7RGy2915k3O']],
-      fkontak
-    );
+      video: randomMeme.endsWith('.mp4') ? { url: randomMeme } : undefined,
+      gifPlayback: randomMeme.endsWith('.gif') ? { url: randomMeme } : undefined,
+      image: randomMeme.endsWith('.jpg') || randomMeme.endsWith('.png') ? { url: randomMeme } : undefined
+    });
 
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
 
