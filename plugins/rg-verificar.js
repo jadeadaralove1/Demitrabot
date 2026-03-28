@@ -1,82 +1,68 @@
 import { database } from '../lib/database.js'
+import { createHash } from 'crypto'
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn }) => {
-  // ✅ FIX DB
-  database.data = database.data || {}
-  database.data.users = database.data.users || {}
+const Reg = /^(.+)[.|]\s*([0-9]+)$/i
 
-  const mentioned = m.mentionedJid || []
-  const userId = mentioned[0] || (m.quoted ? m.quoted.sender : m.sender)
+let handler = async (m, { conn, args, prefix }) => {
+    const text = args.join(' ')
+    const user = database.data.users[m.sender]
+    const name2 = m.pushName || 'Darling'
+    const zeroImg = 'https://causas-files.vercel.app/fl/9vs2.jpg'
 
-  const users = database.data.users
-  // Inicializar usuario si no existe
-  if (!users[userId]) {
-    users[userId] = { 
-      name: 'Sin nombre', 
-      description: '', 
-      genre: '', 
-      pasatiempo: 'No definido', 
-      level: 0, 
-      exp: 0,
-      coins: 0,
-      bank: 0,
-      registered: false
+    if (user.registered) return m.reply(
+        `💗 *¡Ya estás registrado, darling~!*\n\n🌸 Si quieres eliminar tu registro usa:\n*${prefix}unreg*`
+    )
+
+    if (!Reg.test(text)) return m.reply(
+        `𖤐 *Registro - Zero Two* 🌸\n\n*Formato correcto:*\n${prefix}reg nombre.edad\n\n*Ejemplo:*\n${prefix}reg ${name2}.18\n\n💗 ¡Regístrate para usar todas mis funciones, darling~!`
+    )
+
+    let [_, name, age] = text.match(Reg)
+    if (!name) return m.reply('💔 El nombre no puede estar vacío, darling~')
+    if (!age) return m.reply('💔 La edad no puede estar vacía, darling~')
+    if (name.length >= 30) return m.reply('💔 El nombre es muy largo, darling~ Usa menos de 30 caracteres.')
+    age = parseInt(age)
+    if (age > 100) return m.reply('💔 Esa edad es demasiado alta, darling~')
+    if (age < 10) return m.reply('💔 Eres muy pequeño para usar el bot, darling~')
+
+    user.name = name.trim()
+    user.age = age
+    user.regTime = +new Date
+    user.registered = true
+
+    const sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
+
+    const regbot = `𖤐 *¡REGISTRO EXITOSO!* 🌸\n\n👤 *Nombre:* ${name}\n🎂 *Edad:* ${age} años\n🆔 *ID:* ${sn}\n\n💗 *¡Bienvenido/a, darling~!*\n\nHmph... más te vale usar el bot bien o no te lo perdonaré~ 💢`
+
+    await m.react('🌸')
+
+    let thumbBuffer = null
+    try {
+        const res = await fetch(zeroImg)
+        thumbBuffer = Buffer.from(await res.arrayBuffer())
+    } catch (e) {
+        console.error('Error descargando imagen:', e)
     }
-  }
 
-  const user = users[userId]
+    await conn.sendMessage(m.chat, {
+        text: regbot,
+        contextInfo: {
+            externalAdReply: {
+                title: '𝐙𝐄𝐑𝐎 𝐓𝐖𝐎 - Registro 🌸',
+                body: 'darling~ 💗',
+                thumbnail: thumbBuffer,
+                mediaType: 1,
+                renderLargerThumbnail: true
+            }
+        }
+    }, { quoted: m })
 
-  if (!user.registered) {
-    return m.reply(`✎ El usuario no está registrado. Usa #reg para registrarte.`)
-  }
-
-  const name = user.name // ✅ Usa el nombre registrado
-  const genero = user.genre || 'Oculto'
-  const desc = user.description || 'Sin descripción'
-  const pasatiempo = user.pasatiempo || 'No definido'
-  const pareja = user.marry && users[user.marry] ? users[user.marry].name : 'Nadie'
-  const estadoCivil = genero === 'Mujer' ? 'Casada con' : genero === 'Hombre' ? 'Casado con' : 'Casadx con'
-  const exp = user.exp || 0
-  const nivel = user.level || 0
-  const coins = user.coins || 0
-  const bank = user.bank || 0
-  const totalCoins = coins + bank
-
-  // 📈 RANK
-  const sorted = Object.values(users).sort((a, b) => (b.level || 0) - (a.level || 0))
-  const rank = sorted.findIndex(u => u === user) + 1
-
-  // 🖼️ FOTO
-  const perfil = await conn.profilePictureUrl(userId, 'image').catch(() => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
-
-  // 🧾 TEXTO
-  let txt = `
-╭───〔 👤 PERFIL 〕───⬣
-│
-│ 🧑 Nombre: ${name}
-│ ⚥ Género: ${genero}
-│ 💬 Desc: ${desc}
-│ 🎯 Pasatiempo: ${pasatiempo}
-│ 💞 ${estadoCivil}: ${pareja}
-│
-│ 📊 Nivel: ${nivel}
-│ ✨ XP: ${exp}
-│ 🏆 Rank: #${rank}
-│
-│ 💰 Coins: ${totalCoins}
-│
-╰──────────────⬣
-`.trim()
-
-  await conn.sendMessage(m.chat, {
-    image: { url: perfil },
-    caption: txt,
-    mentions: [userId]
-  }, { quoted: m })
+    await database.save()
 }
 
-handler.help = ['perfil']
-handler.tags = ['rpg']
-handler.command = ['perfil', 'profile']
+handler.help = ['reg']
+handler.tags = ['main']
+handler.command = ['reg', 'register', 'registrar']
 
 export default handler
