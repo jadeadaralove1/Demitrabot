@@ -2,23 +2,23 @@ import { database } from '../lib/database.js'
 
 // ==================== COMANDO #antibot (Solo Admins) ====================
 let handler = async (m, { conn, args, isAdmin }) => {
-    if (!m.isGroup) return m.reply('Demi avisa que este comando solo es para grupos!*')
+    if (!m.isGroup) return m.reply('ㅤᘓ︵ㅤ🐞ㅤ꒰꒰ Demi avisa que este comando solo es para grupos!*')
 
-    if (!isAdmin) return m.reply(`Solo los administradores pueden controlar mi AntiBot`)
+    if (!isAdmin) return m.reply(`* 𐄹 ۪ ׁ 💣ᩚ̼ 𖹭̫ ▎Solo los administradores pueden controlar mi AntiBot`)
 
     let chat = database.data.groups[m.chat]
     if (!chat) chat = database.data.groups[m.chat] = { antibot: false }
 
     if (args[0] === 'on') {
-        if (chat.antibot) return m.reply('*¡El AntiBot ya estaba activado!*')
+        if (chat.antibot) return m.reply('** 𐄹 ۪ ׁ 💣ᩚ̼ 𖹭̫ ▎¡El AntiBot ya estaba activado!*')
         chat.antibot = true
         await database.save()
-        m.reply(`*¡ANTIBOT ACTIVADO!*\n\nNingún robot imitador podrá entrar`)
+        m.reply(`*ㅤᘓ︵ㅤ🐞ㅤ꒰꒰ ¡ANTIBOT ACTIVADO!*\n\nNingún robot imitador podrá entrar`)
     } else if (args[0] === 'off') {
-        if (!chat.antibot) return m.reply('*El AntiBot ya estaba desactivado.*')
+        if (!chat.antibot) return m.reply('* 𐄹 ۪ ׁ 💣ᩚ̼ 𖹭̫ ▎*El AntiBot ya estaba desactivado.*')
         chat.antibot = false
         await database.save()
-        m.reply('*AntiBot desactivado...* Espero que no entren robots molestos')
+        m.reply('ㅤᘓ︵ㅤ🧬ㅤ꒰꒰ *AntiBot desactivado...* Espero que no entren bots molestos')
     } else {
         m.reply(`*「 Demitra bot 」*\n\nUso:\n*#antibot on* → Activar\n*#antibot off* → Desactivar\n\n¡Solo admins del grupo!`)
     }
