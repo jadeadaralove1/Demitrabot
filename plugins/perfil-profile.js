@@ -9,10 +9,9 @@ let handler = async (m, { conn }) => {
   const userId = mentioned[0] || (m.quoted ? m.quoted.sender : m.sender)
 
   const globalUsers = global.db.data.users || {}
-  const user2 = globalUsers[userId] || {}
 
   // Inicializar usuario si no existe
-  if (!user2.name) {
+  if (!globalUsers[userId]) {
     globalUsers[userId] = { name: 'Sin nombre', description: '', genre: '', pasatiempo: 'No definido', level: 0, exp: 0 }
   }
 
@@ -70,6 +69,7 @@ let handler = async (m, { conn }) => {
 ╰──────────────⬣
 `.trim()
 
+  // ✅ Menciona al usuario usando su JID y su nombre registrado
   await conn.sendMessage(m.chat, {
     image: { url: perfil },
     caption: txt,
