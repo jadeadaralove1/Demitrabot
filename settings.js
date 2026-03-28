@@ -5,7 +5,10 @@ import fs from 'fs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 
-global.owner = ['5493863402551','5493863447787'];
+global.owner = [
+['5493863447787', 'Dev1','true'],
+['5493863402551', 'dev2'],
+'];
 global.mods = [];
 global.suittag = [];
 global.prems = [];
