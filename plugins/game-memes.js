@@ -1,6 +1,5 @@
-// handler-meme-pro-simple.js
+// handler-meme-pro-final.js
 
-// Lista de memes en Catbox (links directos)
 let memes = [
   "https://files.catbox.moe/vh4ep2.mp4",
   "https://files.catbox.moe/2bgp1g.gif",
@@ -9,15 +8,12 @@ let memes = [
   "https://files.catbox.moe/d9h4q7.jpg"
 ];
 
-// Pool de memes aleatorios para no repetir
 let memePool = [...memes];
 
 let handler = async (m, { conn }) => {
   try {
-    // Recargar el pool si se vacía
     if (memePool.length === 0) memePool = [...memes];
 
-    // Elegir un meme aleatorio del pool y removerlo
     const index = Math.floor(Math.random() * memePool.length);
     const randomMeme = memePool.splice(index, 1)[0];
 
@@ -26,13 +22,20 @@ let handler = async (m, { conn }) => {
 🧠 Aquí tienes un meme en español invocado desde las sombras...
 ✦ Que la risa ilumine tu noche oscura.`;
 
-    // Enviar imagen o video directamente
-    await conn.sendMessage(m.chat, {
-      caption,
-      video: randomMeme.endsWith('.mp4') ? { url: randomMeme } : undefined,
-      gifPlayback: randomMeme.endsWith('.gif') ? { url: randomMeme } : undefined,
-      image: randomMeme.endsWith('.jpg') || randomMeme.endsWith('.png') ? { url: randomMeme } : undefined
-    });
+    let messageOptions = { caption };
+
+    if (randomMeme.endsWith('.jpg') || randomMeme.endsWith('.png')) {
+      messageOptions.image = { url: randomMeme };
+    } else if (randomMeme.endsWith('.gif')) {
+      messageOptions.video = { url: randomMeme };
+      messageOptions.gifPlayback = true;
+    } else if (randomMeme.endsWith('.mp4')) {
+      messageOptions.video = { url: randomMeme };
+    } else {
+      throw 'Formato de meme no soportado';
+    }
+
+    await conn.sendMessage(m.chat, messageOptions);
 
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
 
