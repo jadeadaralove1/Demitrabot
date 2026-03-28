@@ -1,5 +1,3 @@
-import { database } from '../lib/database.js'
-
 let handler = async (m, { args, usedPrefix, command }) => {
   global.db = global.db || {}
   global.db.data = global.db.data || {}
