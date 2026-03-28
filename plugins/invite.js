@@ -1,6 +1,4 @@
 // handler_invite.js
-import { parse } from 'url';
-
 const linkRegex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})(?:\s+[0-9]{1,3})?/i;
 
 async function getGroupName(client, chatId) {
@@ -26,12 +24,28 @@ let handler = async (m, { conn, args }) => {
 
   const cooldown = 10 * 60 * 1000;
   const nextTime = (user.jointime || 0) + cooldown;
-  if (Date.now() < nextTime) return m.reply(`⏳ Espera ${msToTime(nextTime - Date.now())} antes de enviar otra invitación.`);
+  if (Date.now() < nextTime)
+    return await conn.sendMessage(
+      m.chat,
+      { text: `⏳ Espera ${msToTime(nextTime - Date.now())} antes de enviar otra invitación.` },
+      { quoted: m }
+    );
 
-  if (!args || !args.length) return m.reply('⚠️ Ingresa el enlace del grupo para invitar al bot.');
+  if (!args || !args.length)
+    return await conn.sendMessage(
+      m.chat,
+      { text: '⚠️ Ingresa el enlace del grupo para invitar al bot.' },
+      { quoted: m }
+    );
+
   const link = args.join(' ');
   const match = link.match(linkRegex);
-  if (!match || !match[1]) return m.reply('⚠️ El enlace ingresado no es válido o está incompleto.');
+  if (!match || !match[1])
+    return await conn.sendMessage(
+      m.chat,
+      { text: '⚠️ El enlace ingresado no es válido o está incompleto.' },
+      { quoted: m }
+    );
 
   const isOficialBot = botId === conn.user?.id?.split(':')[0] + '@s.whatsapp.net';
   const botType = isOficialBot ? 'Principal/Owner' : 'Sub Bot';
@@ -55,7 +69,11 @@ let handler = async (m, { conn, args }) => {
     } catch {}
   }
 
-  await conn.reply(m.chat, '✅ El enlace fue enviado correctamente. ¡Gracias por tu invitación!', m);
+  await conn.sendMessage(
+    m.chat,
+    { text: '✅ El enlace fue enviado correctamente. ¡Gracias por tu invitación!' },
+    { quoted: m }
+  );
 
   // Guardar cooldown
   user.jointime = Date.now();
