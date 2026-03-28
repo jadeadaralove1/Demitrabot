@@ -1,5 +1,5 @@
 // handler-meme-pro-final.js
-
+//desactivado en arreglo
 let memes = [
   "https://files.catbox.moe/vh4ep2.mp4",
   "https://files.catbox.moe/2bgp1g.gif",
