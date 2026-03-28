@@ -21,14 +21,29 @@ let handler = async (m, { args, usedPrefix, command }) => {
   const user = global.db.data.users[userId]
   const input = args.join(' ').trim()
 
-  if (!input) return m.reply(`ᘛ  ࣭   🪼⃝    ࣪   ࣭Debes especificar una descripción válida.\n\n> Ejemplo » *${usedPrefix + command} Me encanta WhatsApp!*`)
+  const pasatiemposDisponibles = ['📚 Leer','🎤 Cantar','🎮 Jugar','🎨 Dibujar','💃 Bailar','🍳 Cocinar','✈️ Viajar','Otro 🌟']
 
-  user.description = input
-  return m.reply(`✅ Se ha establecido tu descripción. Revisa tu perfil con *${usedPrefix}perfil*`)
+  if (!input) {
+    return m.reply(`🐢 Elige un pasatiempo:\n${pasatiemposDisponibles.map((p,i) => `${i+1}) ${p}`).join('\n')}\n\nEjemplo: *${usedPrefix + command} 1* o *${usedPrefix + command} Leer*`)
+  }
+
+  let seleccionado = ''
+  if (/^\d+$/.test(input)) {
+    const index = parseInt(input) - 1
+    if (index >= 0 && index < pasatiemposDisponibles.length) seleccionado = pasatiemposDisponibles[index]
+    else return m.reply(`❌ Número inválido (1-${pasatiemposDisponibles.length})`)
+  } else {
+    const encontrado = pasatiemposDisponibles.find(p => p.toLowerCase().includes(input.toLowerCase()))
+    if (!encontrado) return m.reply('❌ Pasatiempo no encontrado')
+    seleccionado = encontrado
+  }
+
+  user.pasatiempo = seleccionado
+  return m.reply(`✅ Pasatiempo establecido:\n> ${user.pasatiempo}\nRevisa tu perfil con *${usedPrefix}perfil*`)
 }
 
-handler.help = ['setdescription', 'setdesc']
+handler.help = ['setpasatiempo', 'sethobby']
 handler.tags = ['rpg']
-handler.command = ['setdescription', 'setdesc']
+handler.command = ['setpasatiempo', 'sethobby']
 
 export default handler
