@@ -1,3 +1,5 @@
+import { database } from '../lib/database.js'
+
 let handler = async (m, { conn }) => {
   // ✅ FIX DB
   global.db = global.db || {}
@@ -8,26 +10,34 @@ let handler = async (m, { conn }) => {
   const mentioned = m.mentionedJid || []
   const userId = mentioned[0] || (m.quoted ? m.quoted.sender : m.sender)
 
-  const globalUsers = global.db.data.users || {}
-
   // Inicializar usuario si no existe
-  if (!globalUsers[userId]) {
-    globalUsers[userId] = { name: 'Sin nombre', description: '', genre: '', pasatiempo: 'No definido', level: 0, exp: 0 }
+  if (!global.db.data.users[userId]) {
+    global.db.data.users[userId] = {
+      name: 'Sin nombre',
+      genre: 'Oculto',
+      description: '',
+      pasatiempo: 'No definido',
+      level: 0,
+      exp: 0,
+      coins: 0,
+      bank: 0,
+      marry: null
+    }
   }
 
-  const user = globalUsers[userId]
+  const user = global.db.data.users[userId]
 
   const botId = conn.user.jid
   const settings = global.db.data.settings?.[botId] || {}
   const currency = settings.currency || 'Coins'
 
-  const name = user.name || 'Sin nombre'
+  const name = user.name
   const genero = user.genre || 'Oculto'
   const desc = user.description || 'Sin descripción'
   const pasatiempo = user.pasatiempo || 'No definido'
 
-  const pareja = user.marry && globalUsers[user.marry]
-    ? globalUsers[user.marry].name
+  const pareja = user.marry && global.db.data.users[user.marry]
+    ? global.db.data.users[user.marry].name
     : 'Nadie'
 
   const estadoCivil =
@@ -35,15 +45,15 @@ let handler = async (m, { conn }) => {
     : genero === 'Hombre' ? 'Casado con'
     : 'Casadx con'
 
-  const exp = user.exp || 0
-  const nivel = user.level || 0
+  const exp = user.exp
+  const nivel = user.level
 
-  const coins = user.coins || 0
-  const bank = user.bank || 0
+  const coins = user.coins
+  const bank = user.bank
   const totalCoins = coins + bank
 
   // 📈 RANK
-  const users = Object.entries(globalUsers).map(([jid, data]) => ({ ...data, jid }))
+  const users = Object.entries(global.db.data.users).map(([jid, data]) => ({ ...data, jid }))
   const sorted = users.sort((a, b) => (b.level || 0) - (a.level || 0))
   const rank = sorted.findIndex(u => u.jid === userId) + 1
 
@@ -51,7 +61,7 @@ let handler = async (m, { conn }) => {
   const perfil = await conn.profilePictureUrl(userId, 'image').catch(() => 'https://cdn.yuki-wabot.my.id/files/2PVh.jpeg')
 
   // 🧾 TEXTO
-  let txt = `
+  const txt = `
 ╭───〔 👤 PERFIL 〕───⬣
 │
 │ 🧑 Nombre: ${name}
@@ -69,7 +79,6 @@ let handler = async (m, { conn }) => {
 ╰──────────────⬣
 `.trim()
 
-  // ✅ Menciona al usuario usando su JID y su nombre registrado
   await conn.sendMessage(m.chat, {
     image: { url: perfil },
     caption: txt,
