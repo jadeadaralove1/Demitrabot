@@ -58,7 +58,6 @@ let handler = async (m, { conn }) => {
   }, { quoted: m })
 }
 
-
 handler.tags = ['info']
 handler.help = ['status', 'estado']
 
