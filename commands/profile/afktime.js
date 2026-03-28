@@ -1,71 +1,61 @@
-import { resolveLidToRealJid } from "../../lib/utils.js"
+let handler = async (m, { conn }) => {
+  // ✅ FIX DB
+  global.db = global.db || {}
+  global.db.data = global.db.data || {}
+  global.db.data.users = global.db.data.users || {}
+  global.db.data.chats = global.db.data.chats || {}
 
-export async function before(m, { client }) {
-const botJid = client.user.id.split(':')[0] + '@s.whatsapp.net'
-const primaryBot = global.db.data.chats[m.chat].primaryBot
-if (primaryBot && botJid !== primaryBot) return 
+  const chat = global.db.data.chats[m.chat] ||= {}
+  const chatUsers = chat.users ||= {}
+  const user = chatUsers[m.sender] ||= {}
 
-const user = global.db.data.chats[m.chat].users[m.sender] ||= {}
+  const formatTiempo = (ms) => {
+    if (typeof ms !== 'number' || isNaN(ms)) return 'desconocido'
+    const h = Math.floor(ms / 3600000)
+    const min = Math.floor((ms % 3600000) / 60000)
+    const s = Math.floor((ms % 60000) / 1000)
+    const parts = []
+    if (h) parts.push(`${h} ${h === 1 ? 'hora' : 'horas'}`)
+    if (min) parts.push(`${min} ${min === 1 ? 'minuto' : 'minutos'}`)
+    if (s || (!h && !min)) parts.push(`${s} ${s === 1 ? 'segundo' : 'segundos'}`)
+    return parts.join(' ')
+  }
 
-const formatTiempo = (ms) => {
-if (typeof ms !== 'number' || isNaN(ms)) return 'desconocido'
-const h = Math.floor(ms / 3600000)
-const min = Math.floor((ms % 3600000) / 60000)
-const s = Math.floor((ms % 60000) / 1000)
-const parts = []
-if (h) parts.push(`${h} ${h === 1 ? 'hora' : 'horas'}`)
-if (min) parts.push(`${min} ${min === 1 ? 'minuto' : 'minutos'}`)
-if (s || (!h && !min)) parts.push(`${s} ${s === 1 ? 'segundo' : 'segundos'}`)
-return parts.join(' ')
-}
-
-// ───── SALIR DE AFK ─────
-if (typeof user.afk === 'number' && user.afk > -1) {
-const ms = Date.now() - user.afk
-const tiempo = formatTiempo(ms)
-
-await client.reply(m.chat, 
-`🧚‍♀️  ㅤ＇   ❚ ❘ *${global.db.data.users[m.sender].name || 'Usuario'}*
+  // ───── SALIR DE AFK ─────
+  if (typeof user.afk === 'number' && user.afk > -1) {
+    const ms = Date.now() - user.afk
+    const tiempo = formatTiempo(ms)
+    await conn.sendMessage(m.chat, { text:
+      `🧚‍♀️ ❚ ❘ *${global.db.data.users[m.sender]?.name || 'Usuario'}*
 ╭━━━〔 ✦ AFK OFF ✦ 〕━━━⬣
 ┃ ⭐⃞░ Motivo » *${user.afkReason || 'sin especificar'}*
 ┃ ⏳ Tiempo » *${tiempo}*
-╰━━━━━━━━━━━━━━━━⬣`, m)
+╰━━━━━━━━━━━━━━━━⬣`
+    }, { quoted: m })
+    user.afk = -1
+    user.afkReason = ''
+  }
 
-user.afk = -1
-user.afkReason = ''
-}
+  // ───── DETECTAR MENCIONES ─────
+  const mentioned = m.mentionedJid || []
+  const quoted = m.quoted ? m.quoted.sender : null
+  const jids = [...new Set([...mentioned, quoted].filter(j => j && j.endsWith('@s.whatsapp.net') && j !== 'status@broadcast'))]
 
-// ───── DETECTAR MENCIONES ─────
-const mentioned = m.mentionedJid || []
-const quoted = m.quoted ? m.quoted.sender : null
-let jids = []
-
-if (mentioned.length) {
-for (const id of mentioned) {
-const real = await resolveLidToRealJid(id, client, m.chat)
-if (real) jids.push(real)
-}}
-
-if (quoted) {
-const real = await resolveLidToRealJid(quoted, client, m.chat)
-if (real) jids.push(real)
-}
-
-jids = [...new Set(jids.filter(j => j && j.endsWith('@s.whatsapp.net') && j !== 'status@broadcast'))]
-
-// ───── AVISO AFK ─────
-for (const jid of jids) {
-const target = global.db.data.chats[m.chat].users[jid]
-if (!target || typeof target.afk !== 'number' || target.afk < 0) continue
-
-const ms = Date.now() - target.afk
-const tiempo = formatTiempo(ms)
-
-await client.reply(m.chat,
-`🧚‍♀️  ㅤ＇   ❚ ❘ *${global.db.data.users[jid].name || 'Usuario'}*
+  // ───── AVISO AFK ─────
+  for (const jid of jids) {
+    const target = chatUsers[jid]
+    if (!target || typeof target.afk !== 'number' || target.afk < 0) continue
+    const ms = Date.now() - target.afk
+    const tiempo = formatTiempo(ms)
+    await conn.sendMessage(m.chat, { text:
+      `🧚‍♀️ ❚ ❘ *${global.db.data.users[jid]?.name || 'Usuario'}*
 ╭━━━〔 ✦ AFK ✦ 〕━━━⬣
 ┃ ⭐⃞░ Motivo » *${target.afkReason || 'sin especificar'}*
 ┃ ⏳ Tiempo » *${tiempo}*
-╰━━━━━━━━━━━━━━⬣`, m)
+╰━━━━━━━━━━━━━━⬣`
+    }, { quoted: m })
+  }
 }
-}
+
+handler.before = true
+export default handler
