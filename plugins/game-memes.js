@@ -2,11 +2,11 @@
 
 // Lista de memes en Catbox (links directos)
 let memes = [
-  "https://files.catbox.moe/66gvcy.jpg",
-  "https://files.catbox.moe/66gvcy.jpg",
-  "https://files.catbox.moe/66gvcy.jpg",
-  "https://files.catbox.moe/66gvcy.jpg",
-  "https://files.catbox.moe/66gvcy.jpg"
+  "https://files.catbox.moe/vh4ep2.mp4",
+  "https://files.catbox.moe/2bgp1g.gif",
+  "https://files.catbox.moe/7y8r6k.jpg",
+  "https://files.catbox.moe/l3n5f2.png",
+  "https://files.catbox.moe/d9h4q7.jpg"
 ];
 
 // Pool de memes aleatorios para no repetir
