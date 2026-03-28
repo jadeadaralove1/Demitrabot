@@ -9,7 +9,7 @@ let handler = async (m, { conn, args }) => {
 
   const query = args.join(' ').trim()
 
-  if (!query) return m.reply('⚠️ Ingresa un link de Instagram')
+  if (!query) return m.reply('𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Ingresa un link de Instagram')
   if (!isInstagram(query)) return m.reply('❌ Link inválido')
 
   try {
@@ -57,7 +57,7 @@ let handler = async (m, { conn, args }) => {
     for (let media of data) {
       await conn.sendMessage(m.chat, {
         video: { url: media },
-        caption: '✅ Demitra descargó esto para ti.'
+        caption: '𐄹 ۪ ׁ ✅ᩚ̼ 𖹭̫ ▎Demitra descargó esto para ti.'
       }, { quoted: m })
     }
 
@@ -67,7 +67,7 @@ let handler = async (m, { conn, args }) => {
 
   } catch (e) {
 
-    let msg = '❌ Error\n\n'
+    let msg = '𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎Error\n\n'
 
     if (e.message === 'NO_VIDEO') {
       msg += '🚫 No se pudo obtener el contenido\n'
