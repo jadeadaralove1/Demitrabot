@@ -1,4 +1,3 @@
-// handler_invite.js
 const linkRegex = /chat\.whatsapp\.com\/([0-9A-Za-z]{20,24})(?:\s+[0-9]{1,3})?/i;
 
 async function getGroupName(client, chatId) {
@@ -11,16 +10,23 @@ async function getGroupName(client, chatId) {
 }
 
 let handler = async (m, { conn, args }) => {
-  const userDb = global.db.data.chats[m.chat]?.users[m.sender] || {};
+  // ───── INICIALIZAR BASE DE DATOS ─────
+  if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {};
+  if (!global.db.data.chats[m.chat].users) global.db.data.chats[m.chat].users = {};
+  if (!global.db.data.chats[m.chat].users[m.sender]) {
+    global.db.data.chats[m.chat].users[m.sender] = { jointime: 0 };
+  }
+
+  const userDb = global.db.data.chats[m.chat].users[m.sender];
   const grupo = m.isGroup ? await getGroupName(conn, m.chat) : 'Chat privado';
   const botId = conn.user.id.split(':')[0] + '@s.whatsapp.net';
   const botSettings = global.db.data.settings[botId] || {};
   const botname = botSettings.botname || 'Bot';
   const dueño = botSettings.owner;
   const cooldown = 600000; // 10 min
-  const nextTime = (userDb.jointime || 0) + cooldown;
+  const nextTime = userDb.jointime + cooldown;
 
-  if (Date.now() - (userDb.jointime || 0) < cooldown) {
+  if (Date.now() - userDb.jointime < cooldown) {
     return m.reply(`✿ Espera *${msToTime(nextTime - Date.now())}* para volver a enviar otra invitación.`);
   }
 
@@ -39,7 +45,7 @@ let handler = async (m, { conn, args }) => {
   const pp = await conn.profilePictureUrl(m.sender, 'image').catch(() => 'https://files.catbox.moe/ofitow.jpeg');
 
   const sugg = `☁️ Solicitud recibida
-> *Usuario ›* ${global.db.data.users[m.sender].name || 'Desconocido'}
+> *Usuario ›* ${global.db.data.users[m.sender]?.name || 'Desconocido'}
 ⭐⃞░ *Enlace ›* ${args.join(' ')}
 🐞ㅤㅤ *Chat ›* ${grupo}
 
@@ -65,12 +71,10 @@ let handler = async (m, { conn, args }) => {
 
   await conn.reply(m.chat, '✿ El enlace fue enviado correctamente. ¡Gracias por tu invitación!', m);
 
+  // ───── GUARDAR TIEMPO DE COOLDOWN ─────
   userDb.jointime = Date.now();
-  if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {};
-  global.db.data.chats[m.chat].users[m.sender] = userDb;
 };
 
-// ───── FUNCIONES AUXILIARES ─────
 function msToTime(duration) {
   const seconds = Math.floor((duration / 1000) % 60);
   const minutes = Math.floor((duration / (1000 * 60)) % 60);
