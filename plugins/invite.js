@@ -11,16 +11,21 @@ async function getGroupName(client, chatId) {
 
 let handler = async (m, { conn, args }) => {
   // ───── INICIALIZAR BASE DE DATOS ─────
+  if (!global.db.data.chats) global.db.data.chats = {};
   if (!global.db.data.chats[m.chat]) global.db.data.chats[m.chat] = {};
   if (!global.db.data.chats[m.chat].users) global.db.data.chats[m.chat].users = {};
   if (!global.db.data.chats[m.chat].users[m.sender]) {
     global.db.data.chats[m.chat].users[m.sender] = { jointime: 0 };
   }
+  if (!global.db.data.users) global.db.data.users = {};
+  if (!global.db.data.users[m.sender]) {
+    global.db.data.users[m.sender] = { name: m.pushName || 'Desconocido' };
+  }
 
   const userDb = global.db.data.chats[m.chat].users[m.sender];
   const grupo = m.isGroup ? await getGroupName(conn, m.chat) : 'Chat privado';
   const botId = conn.user.id.split(':')[0] + '@s.whatsapp.net';
-  const botSettings = global.db.data.settings[botId] || {};
+  const botSettings = global.db.data.settings?.[botId] || {};
   const botname = botSettings.botname || 'Bot';
   const dueño = botSettings.owner;
   const cooldown = 600000; // 10 min
