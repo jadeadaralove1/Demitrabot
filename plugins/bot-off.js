@@ -13,7 +13,7 @@ let handler = async (m, { conn, args, prefix, command, isOwner }) => {
         let action = args[0]?.toLowerCase()
 
         if (action !== 'on' && action !== 'off') {
-                        return m.reply(`Demitra\n\n* 𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Uso incorrecto, darling.\nEjemplo: *${prefix + command} on* o *${prefix + command} off*`)
+                        return m.reply(`Demitra\n\n𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎Uso incorrecto, darling.\nEjemplo: *${prefix + command} on* o *${prefix + command} off*`)
         }
 
         if (!database.data.groups) database.data.groups = {}
