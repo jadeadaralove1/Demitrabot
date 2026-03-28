@@ -1,13 +1,12 @@
 let handler = async (m, { conn }) => {
-  // ✅ FIX DB
+  // ✅ Inicializar DB
   global.db = global.db || {}
   global.db.data = global.db.data || {}
-  global.db.data.users = global.db.data.users || {}
   global.db.data.chats = global.db.data.chats || {}
-
   const chat = global.db.data.chats[m.chat] ||= {}
   const chatUsers = chat.users ||= {}
   const user = chatUsers[m.sender] ||= {}
+  global.db.data.users[m.sender] ||= {}
 
   const formatTiempo = (ms) => {
     if (typeof ms !== 'number' || isNaN(ms)) return 'desconocido'
@@ -25,12 +24,13 @@ let handler = async (m, { conn }) => {
   if (typeof user.afk === 'number' && user.afk > -1) {
     const ms = Date.now() - user.afk
     const tiempo = formatTiempo(ms)
-    await conn.sendMessage(m.chat, { text:
-      `🧚‍♀️ ❚ ❘ *${global.db.data.users[m.sender]?.name || 'Usuario'}*
+    await conn.sendMessage(m.chat, {
+      text: `🧚‍♀️ ❚ ❘ *${global.db.data.users[m.sender]?.name || 'Usuario'}* ha regresado del AFK.
 ╭━━━〔 ✦ AFK OFF ✦ 〕━━━⬣
 ┃ ⭐⃞░ Motivo » *${user.afkReason || 'sin especificar'}*
-┃ ⏳ Tiempo » *${tiempo}*
-╰━━━━━━━━━━━━━━━━⬣`
+┃ ⏳ Tiempo ausente » *${tiempo}*
+╰━━━━━━━━━━━━━━━━⬣`,
+      mentions: [m.sender]
     }, { quoted: m })
     user.afk = -1
     user.afkReason = ''
@@ -47,12 +47,13 @@ let handler = async (m, { conn }) => {
     if (!target || typeof target.afk !== 'number' || target.afk < 0) continue
     const ms = Date.now() - target.afk
     const tiempo = formatTiempo(ms)
-    await conn.sendMessage(m.chat, { text:
-      `🧚‍♀️ ❚ ❘ *${global.db.data.users[jid]?.name || 'Usuario'}*
+    await conn.sendMessage(m.chat, {
+      text: `🧚‍♀️ ❚ ❘ *${global.db.data.users[jid]?.name || 'Usuario'}* está AFK.
 ╭━━━〔 ✦ AFK ✦ 〕━━━⬣
 ┃ ⭐⃞░ Motivo » *${target.afkReason || 'sin especificar'}*
-┃ ⏳ Tiempo » *${tiempo}*
-╰━━━━━━━━━━━━━━⬣`
+┃ ⏳ Tiempo ausente » *${tiempo}*
+╰━━━━━━━━━━━━━━⬣`,
+      mentions: [jid]
     }, { quoted: m })
   }
 }
