@@ -19,7 +19,8 @@ let handler = async (m, { conn, args, prefix }) => {
 
     const q = encodeURIComponent(text)
 
-    const texto = `*¡BÚSQUEDA APK LISTA!*\n\n` +
+    const texto = `໒꒰ ‌‌ ◌ ´ ꒳ `◌‌ ‌‌ ‌‌꒱ა  𝖡𝗎́𝗌𝗊𝗎𝖾𝖽𝖺 𝖽𝖾 𝖺𝗉𝗄𝗌 𝗅𝗅𝗌𝗍𝖺!ׁ!
+     ` ´∪ ∪` ´\n\n` +
         `Buscando *"${text}"\n\n` +
         `*Elige tu sitio favorito:*\n\n` +
         `*Uptodown* (el más seguro y rápido)\nhttps://uptodown.com/android/search?q=${q}\n\n` +
