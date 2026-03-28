@@ -58,8 +58,6 @@ let handler = async (m, { conn }) => {
   }, { quoted: m })
 }
 
-// ✅ Reconoce tanto con prefijo como directamente #status
-handler.command = /^(#?status|#?estado)$/i
 
 handler.tags = ['info']
 handler.help = ['status', 'estado']
