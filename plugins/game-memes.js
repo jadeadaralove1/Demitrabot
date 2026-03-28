@@ -1,11 +1,45 @@
 import axios from 'axios';
 
+// Lista de subreddits en español
+const subreddits = [
+  'memesESP',
+  'SpanishMeme',
+  'MemesEnEspanol',
+  'LatinoPeopleTwitter'
+];
+
+// Función para detectar español en título
+const isSpanish = (text) => /[áéíóúñ¿¡]/i.test(text);
+
+// Cache de memes para no repetir
+let memeCache = [];
+
 let handler = async (m, { command, conn }) => {
   try {
-    const res = await axios.get('https://meme-api.com/gimme/memesESP');
-    const memeUrl = res.data.url;
+    let memeUrl = null;
+    let attempts = 0;
+    let memeTitle = '';
 
-    if (!memeUrl) throw 'No se encontró meme en español';
+    // Intentos de hasta 10 memes
+    while (!memeUrl && attempts < 10) {
+      const randomSub = subreddits[Math.floor(Math.random() * subreddits.length)];
+      const res = await axios.get(`https://meme-api.com/gimme/${randomSub}`);
+
+      if (res.data && res.data.url && isSpanish(res.data.title)) {
+        // Evitar memes repetidos
+        if (!memeCache.includes(res.data.url)) {
+          memeUrl = res.data.url;
+          memeTitle = res.data.title;
+          memeCache.push(memeUrl);
+
+          // Limitar cache a últimos 50 memes
+          if (memeCache.length > 50) memeCache.shift();
+        }
+      }
+      attempts++;
+    }
+
+    if (!memeUrl) throw 'No se encontró meme en español después de varios intentos';
 
     const wm = (typeof global !== 'undefined' && global.wm) ? global.wm : 'Shadow-BOT-MD ⚔️';
     const bot = 'Shadow-BOT-MD ⚔️';
@@ -22,7 +56,7 @@ let handler = async (m, { command, conn }) => {
 
     let caption = `☽ 『 Shadow Garden Memes 』 ☽
 
-🧠 Aquí tienes un meme en español invocado desde las sombras...
+🧠 ${memeTitle}
 ✦ Que la risa ilumine tu noche oscura.`;
 
     await conn.sendButton(
