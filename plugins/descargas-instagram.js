@@ -70,7 +70,7 @@ let handler = async (m, { conn, args }) => {
     let msg = '𐄹 ۪ ׁ ❌ᩚ̼ 𖹭̫ ▎Error\n\n'
 
     if (e.message === 'NO_VIDEO') {
-      msg += '🚫 No se pudo obtener el contenido\n'
+      msg += '◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ No se pudo obtener el contenido\n'
       msg += '◜࣭࣭࣭࣭࣭᷼💡̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Las APIs no respondieron o el link no es válido'
     } else {
       msg += '◜࣭࣭࣭࣭࣭᷼🌐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Error de conexión\n' + e.message
