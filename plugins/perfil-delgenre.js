@@ -1,3 +1,5 @@
+import { database } from '../lib/database.js'
+
 let handler = async (m, { conn }) => {
 
   // ✅ Aseguramos que la DB exista
