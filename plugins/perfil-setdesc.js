@@ -23,11 +23,17 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
   const user = global.db.data.users[userId]
 
-  const input = args.join(' ')
-  if (!input) return m.reply(`ᘛ  ࣭   🪼⃝    ࣪   ࣭Debes especificar una descripción válida para tu perfil.\n\n> Ejemplo » *${usedPrefix + command} Hola, uso WhatsApp!*`)
+  const input = args.join(' ').trim()
+  if (!input) return m.reply(
+    `ᘛ  ࣭   🪼⃝    ࣪   ࣭Debes especificar una descripción válida para tu perfil.\n\n> Ejemplo » *${usedPrefix + command} Hola, uso WhatsApp!*`
+  )
 
+  // Guardar descripción
   user.description = input
-  return m.reply(`   ࣪   🐢  ࣭  Se ha establecido tu descripción, puedes revisarla con ${usedPrefix}profile ૮₍˶• ˔ ก₎ა`)
+
+  return m.reply(
+    `🐢⃝ Se ha establecido tu descripción correctamente.\nPuedes revisarla con *${usedPrefix}perfil* ૮₍˶• ˔ ก₎ა`
+  )
 }
 
 handler.help = ['setdescription', 'setdesc']
