@@ -1,54 +1,23 @@
-let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
-    // Validaciones de grupo y admin (aunque tu framework ya lo hace abajo, es buen filtro)
-    if (!m.isGroup) {
-        await m.react('💔')
-        return m.reply('💔 Este comando solo funciona en grupos darling~')
-    }
+var handler = async (m, { conn, usedPrefix, command, text, groupMetadata, isAdmin }) => {
+let mentionedJid = await m.mentionedJid
+let user = mentionedJid && mentionedJid.length ? mentionedJid[0] : m.quoted && await m.quoted.sender ? await m.quoted.sender : null
+if (!user) return conn.reply(m.chat, `*ᐛ❄* Mensiona a un ciudadano de este mundo mágico para darle *privilegios altos.*`, m, rcanal)
+try {
+const groupInfo = await conn.groupMetadata(m.chat)
+const ownerGroup = groupInfo.owner || m.chat.split('-')[0] + '@s.whatsapp.net'
+if (user === ownerGroup || groupInfo.participants.some(p => p.id === user && p.admin))
+return conn.reply(m.chat, '*ᐛ🔔* Está persona ya es admin', m, rcanal)
+await conn.groupParticipantsUpdate(m.chat, [user], 'promote')
+await conn.reply(m.chat, `*ᐛ🌟* El ciudadano fue puesto como ayudante del rey *(creador del grupo)*.`, m, rcanal)
+} catch (e) {
+conn.reply(m.chat, `Error:\n\n✎ ${e.message}`, m)
+}}
 
-    if (!isAdmin && !isOwner) {
-        await m.react('💔')
-        return m.reply('💔 Solo admins y owner pueden usar este comando mi amor~')
-    }
-
-    // ¡NUEVO! Validar que el bot tenga permisos de administrador
-    if (!isBotAdmin) {
-        await m.react('💔')
-        return m.reply('💔 Darling~ necesito ser administradora del grupo para poder dar o quitar poder~')
-    }
-
-    let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : null
-    if (!who) {
-        await m.react('🌸')
-        return m.reply('💗 Menciona o responde al usuario que quieres promover/degradar darling~')
-    }
-
-    await m.react('🍬')
-
-    try {
-        if (command === 'promote') {
-            await conn.groupParticipantsUpdate(m.chat, [who], 'promote')
-            // ¡CORREGIDO! Se agrega "mentions" para que la etiqueta funcione correctamente
-            await conn.sendMessage(m.chat, { text: `💗 *¡PROMOTE APLICADO!* 🌸\n\n@${who.split('@')[0]} ahora es administrador del grupo.`, mentions: [who] }, { quoted: m })
-            await m.react('👑')
-        } 
-        else if (command === 'demote') {
-            await conn.groupParticipantsUpdate(m.chat, [who], 'demote')
-            // ¡CORREGIDO! Se agrega "mentions" para que la etiqueta funcione correctamente
-            await conn.sendMessage(m.chat, { text: `💔 *¡DEMOTE APLICADO!* 🌸\n\n@${who.split('@')[0]} ya no es administrador.`, mentions: [who] }, { quoted: m })
-            await m.react('👑')
-        }
-    } catch (e) {
-        console.error(e)
-        await m.react('💔')
-        m.reply('💔 Uy darling... no pude cambiar el rol esta vez. Asegúrate de que no esté intentando modificar al creador del grupo~')
-    }
-}
-
-handler.help = ['promote @user', 'demote @user']
-handler.tags = ['group']
-handler.command = ['promote', 'demote']
+handler.help = ['promote']
+handler.tags = ['grupo']
+handler.command = ['promote', 'promover']
 handler.group = true
 handler.admin = true
-handler.botAdmin = true // ¡NUEVO! Le dice al bot que exija ser admin antes de ejecutar
+handler.botAdmin = true
 
 export default handler
