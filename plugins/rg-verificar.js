@@ -43,16 +43,27 @@ Next command. ::
 
     const sn = createHash('md5').update(m.sender).digest('hex').slice(0, 20)
 
-    const regbot = `♠ Registro — Demitra ♠
+    const regbot = `૮   ּ    ۟   ㅤ 𝗣𝗘𝗥𝗙𝗜𝗟 ֗   ぅ   𓈒   <𝟯!\n\n
 
-Formato adecuado:
-#reg nombre.edad
+໒    ׂ     𝓝𝗈𝗆𝖻𝗋𝖾  ੭୧   ᮫    
 
-Ejemplo:
-#reg ${name2}.18
+> 𓈒    ׂ   🪼੭       ᮫      : ${name}\n
 
-> Qué descuido no estar registrado…
-Adelante, querido hazlo correctamente`
+
+໒    ׂ     𝓔𝖽𝖺𝖽   ੭୧   ᮫    
+
+> 𓈒    ׂ   💭੭       ᮫      : ${age}\n
+
+
+໒   ׂ   “Id.”   ੭୧   ᮫    
+
+> 𓈒    ׂ   🔮੭       ᮫  : ${sn}\n\n
+
+
+
+𝗘𝘅𝖼𝖾𝗅𝖾𝗇𝗍𝖾, 𝗊𝗎𝖾𝗋𝗂𝖽𝗈 𝗇𝗈𝗏𝖺𝘁𝗼… 𝗍𝗎 𝗋𝖾𝗀𝗂𝗌𝘁𝗿𝗈 𝗁𝖺 𝗌𝗂𝖽𝗈 𝗎𝗇 𝖾́𝗑𝗂𝗍𝗼.\n\n
+𝖠𝗊𝗎𝗂́ 𝗍𝗂𝗲𝗻𝖾𝗌 𝗍𝗎 𝗉𝖾𝗿𝖿𝗂𝗅, 𝗋𝖾𝗅𝗎𝖼𝗂𝖾𝗇𝗍𝖾 𝗒 𝗅𝗂𝗌𝗍𝗈 𝗉𝖺𝗋𝖺 𝘂𝗌𝖺𝗋.
+𝗔𝖽𝗆𝗂́𝗋𝖺𝗅𝗈, 𝗍𝗈́𝗰𝖺𝗅𝗈, 𝗁𝖺𝘇𝗅𝗈 𝗍𝗎𝗒𝗈… 𝗉𝖾𝗿𝗈 𝗋𝖾𝖼𝗎𝖾𝗋𝖽𝖺, 𝗌𝗂𝖾𝗆𝗉𝗋𝖾 𝖻𝖺𝗃𝗈 𝗺𝗂 𝗆𝗂𝗋𝖺𝗱𝖺.`
 
     await m.react('🪻')
 
