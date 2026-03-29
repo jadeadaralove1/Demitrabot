@@ -18,10 +18,10 @@ let handler = async (m) => {
             timeZone: z.tz, 
             hour12: false 
         })
-        texto += `🕒 *${z.name}:* ${hora}\n`
+        texto += `◜࣭࣭࣭࣭࣭᷼⏰̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *${z.name}:* ${hora}\n`
     })
 
-    texto += `\n¡Demitra siempre está despierta`
+    texto += `\n> ¡Demitra siempre está despierta`
 
     return m.reply(texto)
 }
