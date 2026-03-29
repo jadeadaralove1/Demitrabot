@@ -13,13 +13,13 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
     // ¡NUEVO! Validar que el bot tenga permisos de administrador
     if (!isBotAdmin) {
         await m.react('😞')
-        return m.reply('Necesito ser administradora del grupo para poder dar o quitar poder~')
+        return m.reply('◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Necesito ser administradora del grupo para poder dar o quitar poder')
     }
 
     let who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : null
     if (!who) {
         await m.react('🪻')
-        return m.reply('Menciona o responde al usuario que quieres promover/degradar')
+        return m.reply('𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎Menciona o responde al usuario que quieres promover/degradar')
     }
 
     await m.react('🐞')
@@ -40,7 +40,7 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
     } catch (e) {
         console.error(e)
         await m.react('😞')
-        m.reply('Uy... no pude cambiar el rol esta vez. Asegúrate de que no esté intentando modificar al creador del grupo')
+        m.reply('◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Uy... no pude cambiar el rol esta vez. Asegúrate de que no esté intentando modificar al creador del grupo')
     }
 }
 
