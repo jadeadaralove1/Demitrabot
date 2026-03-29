@@ -20,7 +20,10 @@ export const run = async (conn, update) => {
             const user = participant.split('@')[0]
 
             const texto =
-                `🌸💗 *¡KYAAAAAH~!!* 💗🌸\n\n` +
+                `ᳮ ֶᦒ֒  ꩝꩝    𝅭  〔  *Wҽʅƈσɱҽ*. 〕𝅭 ᡴ ᡴ ⣙⣙
+ ࣭࣭۪࣭࣭︶ٰ࣭࣭۪࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭࣭࣭۪࣭࣭᳐᳑︶ٰ࣭࣭۪࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑︶࣭࣭۪࣭࣭᳐᳑
+ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
+         ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
                 `¡Mira nada más! Un nuevo *Darling* acaba de entrar a *mi* paraíso rosado~ 😼\n\n` +
                 `¡Bienvenido/a @${user}!! ♡\n\n` +
                 `Desde este segundo exacto... **eres mío/mía**. No pienses en irte nunca, ¿okay? Porque no te voy a dejar escapar jamás 💕\n` +
