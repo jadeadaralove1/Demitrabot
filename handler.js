@@ -329,7 +329,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.private && isGroup) {
-            return m.reply('💬 *CHAT PRIVADO*\nEscríbeme al privado para usar este comando.');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ💬 ᩚ̼ 𖹭̫ ▎ *CHAT PRIVADO*\n\n“Hmm… este no es el lugar adecuado para esto.”\n\n“Si deseas continuar, tendrás que hablar conmigo en *privado*.”\n\n“No todo espectáculo es para el público”');
         }
 
         if (cmd.limit && !isPremium && !isOwner) {
