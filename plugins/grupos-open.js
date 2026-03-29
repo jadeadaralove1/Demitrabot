@@ -8,7 +8,9 @@ let handler = async (m, { conn }) => {
             return m.reply('*😔 No pude abrir el grupo.*')
         }
     }
-    m.reply('*Grupo abierto.*\n> Ya pueden volver a escribir sus ocurrencias.')
+    m.reply('(＼᳟ㅤ ⃞🔓ㅤ.ᐟ   𝗚𝗋𝗎𝗉𝗈 𝖠𝖻𝗂𝖾𝗋𝗍𝗼.\n> 
+✧  ׁ    𓈒    
+> 𝗘𝗌𝗍𝖾 𝗀𝗋𝗎𝗉𝗈 𝖿𝗎𝖾 𝖺𝖻𝗂𝖾𝗋𝗍𝗈, 𝖫𝗈𝗌 𝗂𝗇𝗍𝖾𝗀𝗋𝖺𝗇𝗍𝖾𝗌 𝗒𝖺 𝗉𝗎𝖾𝖽𝖾𝗇 𝗁𝖺𝖻𝗹𝗮𝗿.')
 }
 
 handler.help = ['open']
