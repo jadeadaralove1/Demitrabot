@@ -75,7 +75,7 @@ Next command. ::
     }
 
     await conn.sendMessage(m.chat, {
-    image: { url: 'https://files.catbox.moe/tuimagen.jpg' },
+    image: { url: 'https://files.catbox.moe/723ln7.jpg' },
     caption: regbot,
     contextInfo: {
         externalAdReply: {
