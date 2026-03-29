@@ -26,7 +26,7 @@ let handler = async (m, { conn }) => {
                 const errorLine = errorLineMatch ? errorLineMatch[1] : 'Desconocido'
 
                 response += `*Error encontrado*\n\n`
-                response += `📁 *Archivo:* ${file}\n`
+                response += `◜࣭࣭࣭࣭࣭᷼📁̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Archivo:* ${file}\n`
                 response += `📝 *Mensaje:* ${error.message}\n`
                 response += `📍 *Línea:* ${errorLine}\n`
                 response += `━━━━━━━━━━━━━━━━━━━\n\n`
