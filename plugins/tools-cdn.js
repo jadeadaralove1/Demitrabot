@@ -45,13 +45,13 @@ let handler = async (m, { conn }) => {
     if (!publicUrl) throw new Error('No se recibió URL pública')
 
     await m.reply(
-      `✅ *Subido exitosamente!*\n\n` +
+      `𐄹 ۪ ׁ ✅ᩚ̼ 𖹭̫ ▎ *Subido exitosamente!*\n\n` +
       `░📦ֶؙ :: *Tipo:* ${mime}\n` +
       `> *URL:*\n${publicUrl}`
     )
 
   } catch (e) {
-    await m.reply(`❌ Error: ${e.message}`)
+    await m.reply(`Error: ${e.message}`)
   }
 }
 
