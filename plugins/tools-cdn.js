@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
   if (!/gif|video|image|audio/.test(mime))
     return m.reply('❌ Formato no compatible.')
 
-  await m.reply('⏳ Descargando archivo...')
+  await m.reply('◜࣭࣭࣭࣭࣭᷼⏳̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Descargando archivo...')
 
   try {
 
@@ -27,7 +27,7 @@ let handler = async (m, { conn }) => {
 
     const extension = mime.split('/')[1] || 'bin'
 
-    await m.reply('⏳ Subiendo a CDN...')
+    await m.reply('𐄹 ۪ ׁ ⏳ᩚ̼ 𖹭̫ ▎ Subiendo a CDN...')
 
     const form = new FormData()
     form.append('files', new Blob([buffer], { type: mime }), `archivo.${extension}`)
