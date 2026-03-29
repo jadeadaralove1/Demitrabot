@@ -317,7 +317,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.group && !isGroup) {
-            return m.reply('🏢 *SOLO GRUPOS*\nEste comando solo está habilitado para grupos.');
+            return m.reply('𐄹 ۪ ׁ 🏥ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *SOLO GRUPOS*\n\n“Intentar usar esto aquí… qué fuera de lugar.”\n\n“Este comando pertenece exclusivamente a los grupos.”\n“No desperdicies mi tiempo otra vez.”');
         }
 
         if (cmd.admin && !isAdmin) {
