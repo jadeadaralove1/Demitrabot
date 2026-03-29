@@ -46,8 +46,8 @@ let handler = async (m, { conn }) => {
 
     await m.reply(
       `✅ *Subido exitosamente!*\n\n` +
-      `📦 *Tipo:* ${mime}\n` +
-      `🔗 *URL:*\n${publicUrl}`
+      `░📦ֶؙ :: *Tipo:* ${mime}\n` +
+      `> *URL:*\n${publicUrl}`
     )
 
   } catch (e) {
