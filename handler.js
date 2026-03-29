@@ -309,19 +309,19 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.premium && !isPremium) {
-            return m.reply('𐄹 ۪ ׁ 💎ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n>  *ACCESO PREMIUM*\n\n“Ah… lo siento, pero este pequeño lujo no es para cualquiera”\n\n“Este comando está reservado únicamente para miembros *Premium*.”\n\n“Quizás algún día asciendas… quién sabe.”');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 💎ᩚ̼ 𖹭̫ ▎*ACCESO PREMIUM*\n\n“Ah… lo siento, pero este pequeño lujo no es para cualquiera”\n\n“Este comando está reservado únicamente para miembros *Premium*.”\n\n“Quizás algún día asciendas… quién sabe.”');
         }
 
         if (cmd.register && !isRegistered) {
-            return m.reply(`𐄹 ۪ ׁ 📝ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *REGISTRO REQUERIDO*\n\n“Oh… parece que aún no existes en mis registros”\n\n“Antes de continuar, tendrás que presentarte como corresponde.”\n\n> Usa: *${prefix}reg nombre.edad*\n> Ejemplo: *${prefix}reg Juan.25*\n\n“No te preocupes… será rápido… si lo haces bien.”`);
+            return m.reply(`*DEMITRA*\n\n𐄹 ۪ ׁ 📝ᩚ̼ 𖹭̫ ▎ *REGISTRO REQUERIDO*\n\n“Oh… parece que aún no existes en mis registros”\n\n“Antes de continuar, tendrás que presentarte como corresponde.”\n\n> Usa: *${prefix}reg nombre.edad*\n> Ejemplo: *${prefix}reg Juan.25*\n\n“No te preocupes… será rápido… si lo haces bien.”`);
         }
 
         if (cmd.group && !isGroup) {
-            return m.reply('𐄹 ۪ ׁ 🏥ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *SOLO GRUPOS*\n\n“Intentar usar esto aquí… qué fuera de lugar.”\n\n“Este comando pertenece exclusivamente a los grupos.”\n“No desperdicies mi tiempo otra vez.”');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 🏥ᩚ̼ 𖹭̫ ▎ *SOLO GRUPOS*\n\n“Intentar usar esto aquí… qué fuera de lugar.”\n\n“Este comando pertenece exclusivamente a los grupos.”\n“No desperdicies mi tiempo otra vez.”');
         }
 
         if (cmd.admin && !isAdmin) {
-            return m.reply('𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *ACCESO DE ADMINISTRADOR*\n\n“Oh… ¿acaso creíste tener autoridad aquí?”\n“Intentar usar esto sin el rango adecuado…”\n“Qué atrevimiento tan encantador.”\n\n“Este comando está reservado únicamente para los *administradores del grupo*.”\n\n“Y tú… no pareces ser uno de ellos~”\n“No insistas.”');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎ *ACCESO DE ADMINISTRADOR*\n\n“Oh… ¿acaso creíste tener autoridad aquí?”\n“Intentar usar esto sin el rango adecuado…”\n“Qué atrevimiento tan encantador.”\n\n“Este comando está reservado únicamente para los *administradores del grupo*.”\n\n“Y tú… no pareces ser uno de ellos~”\n“No insistas.”');
         }
 
         if (cmd.botAdmin && !isBotAdmin) {
