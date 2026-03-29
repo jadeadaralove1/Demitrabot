@@ -13,7 +13,7 @@ let handler = async (m, { conn }) => {
         let name = await conn.getName(who) || 'Darling'
 
         let caption = `𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎ *Foto de perfil de ${name}*\n\n` +
-                      `¡Mira! 🪼`
+                      `◜࣭࣭࣭࣭࣭᷼🪼̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ ¡Mira!`
 
         await conn.sendMessage(m.chat, {
             image: { url: pp },
@@ -25,8 +25,8 @@ let handler = async (m, { conn }) => {
 
     } catch (e) {
         console.error('PP ERROR:', e)
-        await m.react('💔')
-        m.reply('Demi no pudo cargar la foto esta vez. Prueba otra vez 😞')
+        await m.react('😞')
+        m.reply('𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎Demi no pudo cargar la foto esta vez. Prueba otra vez 😞')
     }
 }
 
