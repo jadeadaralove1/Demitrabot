@@ -31,7 +31,7 @@ const handler = async (msg, { conn, args, usedPrefix, command }) => {
       msg.chat,
       {
         image: Buffer.from(res.data),
-        caption: `🎨 *IMAGEN GENERADA*\n• Prompt: ${query}`
+        caption: `𐄹 ۪ ׁ 🎨ᩚ̼ 𖹭̫ ▎ *IMAGEN GENERADA*\n`
       },
       { quoted: msg }
     )
