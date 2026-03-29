@@ -60,8 +60,8 @@ let handler = async (m, { conn, args }) => {
         await m.reply(txt.slice(0, 65536) + '')
         await m.react('✅')
     } catch (e) {
-        await m.react('💔')
-        await m.reply(`Algo salió mal... [Error: ${e}]`)
+        await m.react('😞')
+        await m.reply(`◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Algo salió mal... [Error: ${e}]`)
     }
 }
 
