@@ -40,9 +40,7 @@ let handler = async (m, { conn, args }) => {
         // 3. Enviar al canal oficial
         await conn.sendMessage(JID_CANAL, {
             video: buffer,
-            caption: `*TikTok de:* ${json.data.autor}\n📝 ${json.data.titulo}\n\n✨ _Enviado por Demitrabot_`,
-            mimetype: 'video/mp4',
-            fileName: `video.mp4`
+            caption: `๑ᰭ      🐍⃞      ᭡ *TikTok de:* ${json.data.autor}\n📝 ${json.data.titulo}\n\n> Enviado por Demitrabot`
         })
 
         await m.react('✅')
