@@ -4,7 +4,7 @@ const handler = async (m, { conn }) => {
     if (!m.isGroup) return m.reply('「 ⚠️ 」 Este comando solo es para grupos.')
 
     await conn.sendMessage(m.chat, {
-        image: { url: 'https://files.catbox.moe/v9sd93.jpg' },
+        image: { url: 'https://files.catbox.moe/kitpab.jpg' },
         caption:
             `Me voy...*\n\n` +
             `No lloren por mí 😼\n\n` +
