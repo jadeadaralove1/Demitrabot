@@ -32,8 +32,7 @@ export const run = async (conn, update) => {
                 ` ⃧⠖⠖   ּ֪͘🎐⃝ۛ֗༌   𐧼  _ᰦᰦ᪶_  𝕄𝚎 𝚙𝚛𝚎𝚜𝚎𝚗𝚝𝚘...
     𝕄𝚒 𝚗𝚘𝚖𝚋𝚛𝚎 𝚎𝚜 `Demitra` , 𝚎𝚜 𝚞𝚗 𝚙𝚕𝚊𝚌𝚎𝚛 𝚌𝚘𝚗𝚘𝚌𝚎𝚛𝚕𝚎,𝚕𝚒𝚗𝚍𝚡!! Para saber más de mi usa #menu
 ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .  
-         ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +
-                `Desde este segundo exacto... **eres mío/mía**. No pienses en irte nunca, ¿okay? Porque no te voy a dejar escapar jamás 💕\n` +
+         ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .             ּ ֶָ֢ .\n\n` +               
                 `Te voy a cuidar, mimar y volar contigo en mi Franxx para siempre... ¡no me sueltes nunca!\n\n` +
                 `¡Estoy tan feliz de tenerte aquí conmigo, mi Darling más especial! Kyaaah~ Ven aquí, no te escapes 🌷💗`
 
