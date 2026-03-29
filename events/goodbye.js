@@ -22,7 +22,8 @@ export const run = async (conn, update) => {
             await conn.sendMessage(id, {
                 image: { url: ppuser },
                 caption:
-                    `「 👋 *ADIÓS* 」\n\n` +
+                    `⠟   ׂ   🪼⃞፝֟͝ꭷ  ׂ 𝗘𝗫𝗜𝗧  𝗣𝗘𝗥𝗦𝗢𝗡    ׂ   ٭ ̼̼⃞   
+  ֯  ❀ ❀ ֢ ໋ ⣿   ݁  ֟𝖠𝗱𝗂𝗈𝘀 𝗈 𝗇𝗈..?݂֯   ✦  ֢   ݁ ⏜\n\n` +
                     `✦ @${user} acaba de salir del grupo.\n\n` +
                     `❝ Que te vaya bien en tu camino, Darling~ 🌷 ❞`,
                 mentions: [participant]
