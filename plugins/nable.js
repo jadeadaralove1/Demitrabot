@@ -10,8 +10,8 @@ const handler = async (m, { args, prefix }) => {
     const features = {
         welcome:  '◜࣭࣭࣭࣭࣭᷼🫐̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *Welcome*',
         goodbye:  '◜࣭࣭࣭࣭࣭᷼🐞̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *Goodbye*',
-        antilink: '◜࣭࣭࣭࣭࣭᷼🔗̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Antilink*',
-        antispam: '◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *Antispam*',
+        antilink: '◜࣭࣭࣭࣭࣭᷼🔗̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *Antilink*',
+        antispam: '◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *Antispam*',
     }
 
     if (!feature || !features[feature]) {
