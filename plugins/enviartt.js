@@ -8,7 +8,7 @@ let handler = async (m, { conn, args }) => {
     let url = args[0] || (m.quoted && m.quoted.text ? m.quoted.text.trim() : '')
 
     if (!url || !url.includes('tiktok.com')) {
-        return m.reply('Necesito un link de TikTok.*\n\nEjemplo: `#enviartt https://vt.tiktok.com/...` o responde a un link con el comando.')
+        return m.reply('Necesito un link de TikTok.*\n\n> Ejemplo: `#enviartt https://vt.tiktok.com/...` o responde a un link con el comando.')
     }
 
     await m.react('⏳')
@@ -46,7 +46,7 @@ let handler = async (m, { conn, args }) => {
         })
 
         await m.react('✅')
-        await m.reply(`✨ ¡Video enviado con éxito al canal:\n*${metadata.name}*!`)
+        await m.reply(`◜࣭࣭࣭࣭࣭᷼✅̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ ¡Video enviado con éxito al canal:\n*${metadata.name}*!`)
 
     } catch (e) {
         console.error(e)
