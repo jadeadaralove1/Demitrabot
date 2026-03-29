@@ -25,9 +25,7 @@ Si deseas desaparecer…\n
 Next command. :: 
 #reg name.age
 #reg ${name2}.18`
-    )
-
-contextInfo: {
+    contextInfo: {
             externalAdReply: {
                 title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
                 body: 'Formato incorrecto',
@@ -37,8 +35,8 @@ contextInfo: {
             }
         }
     }, { quoted: m })
-}
-
+ }
+) 
     let [_, name, age] = text.match(Reg)
     if (!name) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭El nombre no puede estar vacío.')
     if (!age) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭La edad no puede estar vacía.')
