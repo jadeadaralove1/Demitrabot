@@ -27,6 +27,18 @@ Next command. ::
 #reg ${name2}.18`
     )
 
+contextInfo: {
+            externalAdReply: {
+                title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
+                body: 'Formato incorrecto',
+                mediaType: 1,
+                renderLargerThumbnail: true,
+                thumbnailUrl: 'https://files.catbox.moe/723ln7.jpg'
+            }
+        }
+    }, { quoted: m })
+}
+
     let [_, name, age] = text.match(Reg)
     if (!name) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭El nombre no puede estar vacío.')
     if (!age) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭La edad no puede estar vacía.')
