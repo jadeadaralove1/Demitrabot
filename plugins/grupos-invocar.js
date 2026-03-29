@@ -10,7 +10,8 @@ const handler = async (m, { conn, args, isAdmin, isOwner }) => {
         const mentions = participants.map(p => `@${p.split('@')[0]}`).join(' ')
 
         const caption =
-            `*¡HAS INVOCADO A TODO EL GRUPO!*\n\n` +
+            ````       ````︶𖫲͜⏝ְ〬𔓕    🐞્    𔓕ְ〬︶𖫲͜⏝
+𞅀፝֟͜͝𞅀    🦭⃞͝ ⚭   ׅ   𝗜𝗡𝗩𝗢𝗖𝗔𝗡𝗗𝗢    ׂ     ׂ  🫐̼̼ᩙ\n\n` +
             `*Anuncio:* ${anuncio}\n\n` +
             `${mentions}\n\n` +
             `¡Respondan rapido no me dejen sola esperando!`
