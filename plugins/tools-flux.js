@@ -6,7 +6,7 @@ const handler = async (msg, { conn, args, usedPrefix, command }) => {
   if (!query) {
     await conn.sendMessage(
       msg.chat,
-      { text: `❌ Error:\n> Debes escribir una descripción.` },
+      { text: `◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Error:\n> Debes escribir una descripción.` },
       { quoted: msg }
     )
 
@@ -39,7 +39,7 @@ const handler = async (msg, { conn, args, usedPrefix, command }) => {
   } catch (e) {
     await conn.sendMessage(
       msg.chat,
-      { text: `❌ Error:\n${e.message}` },
+      { text: `◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  Error:\n${e.message}` },
       { quoted: msg }
     )
   }
