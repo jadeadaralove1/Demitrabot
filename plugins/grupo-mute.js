@@ -31,7 +31,7 @@ let handler = async (m, { conn, prefix, isAdmin, isBotAdmin }) => {
     await database.save()
 
     await conn.sendMessage(m.chat, {
-        text: `🔇 @${who.split('@')[0]} ha sido muteado.`,
+        text: `𐄹 ۪ ׁ 🔇ᩚ̼ 𖹭̫ ▎@${who.split('@')[0]} ha sido muteado.`,
         mentions: [who]
     })
 }
