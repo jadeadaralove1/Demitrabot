@@ -77,7 +77,7 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
 
     // ✅ Confirmación
     await m.reply(
-      `♡ Ya entré a *${groupName}*\n` +
+      `𐄹 ۪ ׁ 🤖ᩚ̼ 𖹭̫ ▎♡ Ya entré a *${groupName}*\n` +
       (days
         ? `Me quedaré ${days} día(s)`
         : 'Me quedaré para siempre')
