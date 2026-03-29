@@ -67,7 +67,7 @@ let handler = async (m, { conn, args, prefix }) => {
         const data = await res.json()
 
         if (!data.status || data.status !== true || !Array.isArray(data.data) || data.data.length < 2) {
-            return m.reply('💔 No encontré suficientes imágenes, darling... prueba con otra búsqueda~')
+            return m.reply('. ּ֪😔͘⃝ۛ֗༌   No encontré suficientes imágenes... prueba con otra búsqueda')
         }
 
         const images = data.data.slice(0, 10).map(img => ({
@@ -75,13 +75,13 @@ let handler = async (m, { conn, args, prefix }) => {
             data: { url: img.hd }
         }))
 
-        const caption = `🌸 *Resultados para:* ${text}\n💗 *~Zero Two*`
+        const caption = `. ּ֪🪷͘⃝ۛ֗༌  *Resultados para:* ${text}\n> *Demitra BOT*`
         await sendAlbumMessage(conn, m.chat, images, { caption, quoted: m })
         await m.react('✅')
     } catch (error) {
         console.error('Error en pinterest:', error)
         await m.react('💔')
-        await m.reply(`💔 Darling, algo salió mal... [Error: ${error.message}]`)
+        await m.reply(`. ּ֪😔͘⃝ۛ֗༌ Algo salió mal... [Error: ${error.message}]`)
     }
 }
 
