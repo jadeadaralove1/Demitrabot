@@ -313,7 +313,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.register && !isRegistered) {
-            return m.reply(`📝 *REGISTRO REQUERIDO*\nDebes registrarte para usar este comando.\n\n> Usa: *${prefix}reg nombre.edad*\n> Ejemplo: *${prefix}reg Juan.25*`);
+            return m.reply(`𐄹 ۪ ׁ 📝ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *REGISTRO REQUERIDO*\n\n“Oh… parece que aún no existes en mis registros”\n\n“Antes de continuar, tendrás que presentarte como corresponde.”\n\n> Usa: *${prefix}reg nombre.edad*\n> Ejemplo: *${prefix}reg Juan.25*\n\n“No te preocupes… será rápido… si lo haces bien.”`);
         }
 
         if (cmd.group && !isGroup) {
