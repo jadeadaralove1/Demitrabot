@@ -36,7 +36,7 @@ export const run = async (conn, upsert) => {
             if (participant?.admin) continue
 
             await conn.sendMessage(id, {
-                text: `「 🚫 *ANTISPAM* 」\n\n✦ @${senderNum} detectado enviando spam.`,
+                text: `*ANTISPAM* \n\n◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭         @${senderNum} detectado enviando spam.`,
                 mentions: [sender]
             })
         }
