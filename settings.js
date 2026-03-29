@@ -35,9 +35,9 @@ global.etiqueta = 'Demitra';
 global.moneda = 'Stamps';
 global.currencySymbol = 'Stamps';
 
-global.welcom1 = '🎩 Bienvenido al grupo. Demitra observa… pero no pregunta demasiado.\n🖤 Respeta las reglas y todo irá bien.\n💻 Edita este mensaje con setwelcome';
-global.welcom2 = '👋 Hasta luego. Tu ausencia no pasará desapercibida.\n🖤 Cuida tu camino antes de volver.\n💻 Edita este mensaje con setbye';
+global.welcom1 = 'Oh, qué maravilla… un nuevo invitado ha llegado.\nBienvenido al espectáculo, querido~\nCompórtate… o podría volver esto mucho más interesante.\nPuedes ajustar este mensaje con setwelcome, si te atreves.';
 
+global.welcom2 = 'Y así, sin más, uno abandona el escenario.\nQué fugaz resulta la presencia humana, ¿no crees?\n🖤 Esperemos que hayas aprendido algo antes de desaparecer.\nEdita este mensaje con setbye… si aún queda alguien escuchando.';
 global.banner = 'https://files.catbox.moe/66gvcy.jpg';
 global.bannerUrl = 'https://files.catbox.moe/4jr8f5.jpg';
 global.avatar = 'https://files.catbox.moe/imfx2l.jpg';
