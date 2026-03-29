@@ -68,7 +68,7 @@ const handler = async (m, { conn, args, who }) => {
                 `Usuario: @${target.split('@')[0]}\n` +
                 `Razón: ${reason}\n\n` +
                 `Advertencias: *${count}/3*\n` +
-                `La próxima te vas volando darling`,
+                `La próxima te vas volando`,
             mentions: [target]
         }, { quoted: m })
     }
