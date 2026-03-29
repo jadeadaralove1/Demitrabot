@@ -28,13 +28,13 @@ let handler = async (m, { conn, command, isAdmin, isOwner, isBotAdmin }) => {
         if (command === 'promote') {
             await conn.groupParticipantsUpdate(m.chat, [who], 'promote')
             // ¡CORREGIDO! Se agrega "mentions" para que la etiqueta funcione correctamente
-            await conn.sendMessage(m.chat, { text: `*¡PROMOTE APLICADO!* \n\n@${who.split('@')[0]} ahora es administrador del grupo.`, mentions: [who] }, { quoted: m })
+            await conn.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝖽𝗮𝗱𝗼 \n\n@${who.split('@')[0]} 𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✔️`, mentions: [who] }, { quoted: m })
             await m.react('🪻')
         } 
         else if (command === 'demote') {
             await conn.groupParticipantsUpdate(m.chat, [who], 'demote')
             // ¡CORREGIDO! Se agrega "mentions" para que la etiqueta funcione correctamente
-            await conn.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈\n\n@${who.split('@')[0]} 𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`, mentions: [who] }, { quoted: m })
+            await conn.sendMessage(m.chat, { text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈 \n\n@${who.split('@')[0]} 𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`, mentions: [who] }, { quoted: m })
             await m.react('👑')
         }
     } catch (e) {
