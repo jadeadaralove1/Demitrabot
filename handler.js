@@ -321,7 +321,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.admin && !isAdmin) {
-            return m.reply('👮 *ERES ADMIN?*\nEste comando es solo para administradores del grupo.');
+            return m.reply('𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *ACCESO DE ADMINISTRADOR*\n\n“Oh… ¿acaso creíste tener autoridad aquí?”\n“Intentar usar esto sin el rango adecuado…”\n“Qué atrevimiento tan encantador.”\n\n“Este comando está reservado únicamente para los *administradores del grupo*.”\n\n“Y tú… no pareces ser uno de ellos~”\n“No insistas.”');
         }
 
         if (cmd.botAdmin && !isBotAdmin) {
