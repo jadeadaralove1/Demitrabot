@@ -38,7 +38,7 @@ let handler = async (m, { conn, args, command }) => {
     .length
 
   if (subsCount >= 50) {
-    return m.reply(`❌ No hay espacio disponible para un Sub-Bot.`)
+    return m.reply(`◜࣭࣭࣭࣭࣭᷼📍̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ No hay espacio disponible para un Sub-Bot.`)
   }
 
   const phone = args[0]
