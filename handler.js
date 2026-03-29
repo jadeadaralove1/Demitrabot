@@ -325,7 +325,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (cmd.botAdmin && !isBotAdmin) {
-            return m.reply('🤖 *ERROR DE PERMISOS*\nNecesito ser administrador del grupo para ejecutar esta acción.');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ🤖 ᩚ̼ 𖹭̫ ▎*PERMISOS INSUFICIENTES*\n\n“Intentar esto sin los permisos adecuados…”\n“Qué problemática tan predecible.”\n\n“Concédeme administración en el grupo si deseas que continúe.”');
         }
 
         if (cmd.private && isGroup) {
