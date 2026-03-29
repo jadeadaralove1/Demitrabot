@@ -86,11 +86,13 @@ let handler = async (m, { conn, text, isOwner, usedPrefix }) => {
     // 🎬 Bienvenida
     let media = 'https://files.catbox.moe/sjak3i.jpg'
 
-    let welcomeText = `╭━━━〔 ♡ Demitra BOT ♡ 〕━━━⬣
-┃ ❥ Ya llegué... 
-┃ ❥ Ahora este grupo es más divertido
-┃ ❥ Llámame si me necesitas ♡
-╰━━━━━━━━━━━━━━━━⬣`
+    let welcomeText = `⁖    ᭲🤖ᯮ  ᯮ    ᮫    𝗗𝗘𝗠𝗜𝗧𝗥𝗔 𝗕𝗢𝗧  ͛  ۪  ۠⌒╭⃝╮    ░
+
+> Y así, comienza el espectáculo
+
+> Este lugar necesitaba un poco de encanto 
+
+> Llámame… siempre estoy escuchando`
 
     await conn.sendMessage(groupId, {
       video: { url: media },
