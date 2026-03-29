@@ -293,19 +293,19 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
 
         // 🛑 INTERCEPTOR DE MODO ADMIN 🛑
         if (isGroup && database.data.groups[m.chat]?.modoadmin && !isAdmin && !isOwner) {
-            return m.reply('𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *MODO ADMIN ACTIVADO*\n\n“Oh my… parece que Demi ha decidido cerrar el telón temporalmente”\n“Solo los administradores tienen el privilegio de… participar en este pequeño espectáculo.”\n\n“Te sugiero observar en silencio… o podrías arruinar la función.”');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎ *MODO ADMIN ACTIVADO*\n\n“Oh my… parece que Demi ha decidido cerrar el telón temporalmente”\n“Solo los administradores tienen el privilegio de… participar en este pequeño espectáculo.”\n\n“Te sugiero observar en silencio… o podrías arruinar la función.”');
         }
 
         if (database.data.users[m.sender]?.banned && !isOwner) {
-            return m.reply('◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Ah… qué desafortunado.”\n“Has sido… *baneado*.”\n\n“Me temo que los comandos ya no están a tu alcance.”\n“Quizás en otra vida tengas mejor suerte”');
+            return m.reply('*DEMITRA*\n\n◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *ACCESO DENEGADO*\n\n“Ah… qué desafortunado.”\n“Has sido… *baneado*.”\n\n“Me temo que los comandos ya no están a tu alcance.”\n“Quizás en otra vida tengas mejor suerte”');
         }
 
         if (cmd.rowner && !isROwner) {
-            return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Oh, qué ambición tan… encantadora.”\n\n“Lamentablemente, este privilegio está reservado únicamente para la *creadora principal*.”\n\n“Y tú… bueno, no eres élla”');
+            return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *ACCESO DENEGADO*\n\n“Oh, qué ambición tan… encantadora.”\n\n“Lamentablemente, este privilegio está reservado únicamente para la *creadora principal*.”\n\n“Y tú… bueno, no eres élla”');
         }
 
         if (cmd.owner && !isOwner) {
-             return m.reply('𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎*DEMITRA*\n\n> *ACCESO RESTRINGIDO*\n\n“Ah… un intento interesante.”\n\n“Pero este comando pertenece exclusivamente a *mi creador*.”\n\n“Y tú, querido… no tienes ese privilegio”');
+             return m.reply('*DEMITRA*\n\n𐄹 ۪ ׁ 👑ᩚ̼ 𖹭̫ ▎ *ACCESO RESTRINGIDO*\n\n“Ah… un intento interesante.”\n\n“Pero este comando pertenece exclusivamente a *mi creador*.”\n\n“Y tú, querido… no tienes ese privilegio”');
         }
 
         if (cmd.premium && !isPremium) {
