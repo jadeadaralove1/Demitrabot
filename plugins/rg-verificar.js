@@ -18,7 +18,7 @@ Si deseas desaparecer…\n
     )
 
     if (!Reg.test(text)) return m.reply(
-        `♠ Registro — Demitra ♠\n\n
+        `᭡͟͡᭡    ⸂⸂ ۛ   ۪  ͘   𝗥𝗲𝗴𝗶𝘀𝘁𝗿𝗼  ۪    ۠   ּ۪🔔⃝ꥑׂ    ᯮ ᯮ\n\n
 
 Formato adecuado:\n
 ${prefix}reg nombre.edad\n\n
