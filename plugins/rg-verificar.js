@@ -31,12 +31,12 @@ Adelante, querido~ hazlo correctamente..`
     )
 
     let [_, name, age] = text.match(Reg)
-    if (!name) return m.reply('💔 El nombre no puede estar vacío, darling~')
-    if (!age) return m.reply('💔 La edad no puede estar vacía, darling~')
-    if (name.length >= 30) return m.reply('💔 El nombre es muy largo, darling~ Usa menos de 30 caracteres.')
+    if (!name) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭El nombre no puede estar vacío.')
+    if (!age) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭La edad no puede estar vacía.')
+    if (name.length >= 30) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭El nombre es muy largo. Usa menos de 30 caracteres.')
     age = parseInt(age)
-    if (age > 100) return m.reply('💔 Esa edad es demasiado alta, darling~')
-    if (age < 10) return m.reply('💔 Eres muy pequeño para usar el bot, darling~')
+    if (age > 100) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭Esa edad es demasiado alta.')
+    if (age < 10) return m.reply('◜࣭࣭࣭࣭࣭᷼🚫̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Eres muy pequeño para usar el bot.')
 
     user.name = name.trim()
     user.age = age
@@ -70,7 +70,7 @@ Adelante, querido hazlo correctamente`
         text: regbot,
         contextInfo: {
             externalAdReply: {
-                title: '𝐙𝐄𝐑𝐎 𝐓𝐖𝐎 - Registro 🌸',
+                title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
                 body: 'BOMSHAKALACA',
                 thumbnail: thumbBuffer,
                 mediaType: 1,
