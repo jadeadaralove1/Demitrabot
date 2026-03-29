@@ -73,22 +73,18 @@ Next command. ::
         console.error('Error descargando imagen:', e)
     }
 
-           await conn.sendMessage(m.chat, {
-    image: { url: 'https://files.catbox.moe/723ln7.jpg' },
-    caption: regbot,
-    mentions: [m.sender],
-    contextInfo: {
-        mentionedJid: [m.sender],
-        externalAdReply: {
-            title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
-            body: 'BOMSHAKALACA',
-            mediaType: 1,
-            renderLargerThumbnail: true,
-            thumbnailUrl: 'https://files.catbox.moe/723ln7.jpg',
-            sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
+           a    await conn.sendMessage(m.chat, {
+        text: regbot,
+        contextInfo: {
+            externalAdReply: {
+                title: '𝗗𝗘𝗠𝗜𝗧𝗥𝗔 - Registro',
+                body: 'BOMSHACALAKA',
+                thumbnail: thumbBuffer,
+                mediaType: 1,
+                renderLargerThumbnail: true
+            }
         }
-    }
-}, { quoted: m })
+    }, { quoted: m })
 
     await database.save()
 }
