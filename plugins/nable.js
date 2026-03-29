@@ -17,10 +17,10 @@ const handler = async (m, { args, prefix }) => {
     if (!feature || !features[feature]) {
         const status = (f) => chat[f] ? '✅' : '❌'
         return m.reply(
-            `「 ⚙️ *FUNCIONES DEL GRUPO* 」\n\n` +
+            `「 ⚙️ *FUNCIONES DEL GRUPO* \n\n` +
             Object.entries(features).map(([k, v]) => `${status(k)} ${v}`).join('\n') +
-            `\n\n✦ *${prefix}nable <función> on/off*\n` +
-            `❝ Funciones: ${Object.keys(features).join(', ')} ❞`
+            `\n\n> *${prefix}nable <función> on/off*\n` +
+            `Funciones: ${Object.keys(features).join(', ')}`
         )
     }
 
