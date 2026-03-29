@@ -297,7 +297,7 @@ Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
         }
 
         if (database.data.users[m.sender]?.banned && !isOwner) {
-            return m.reply('🚫 *ESTÁS BANEADO*\nNo puedes usar los comandos del bot.');
+            return m.reply('◜࣭࣭࣭࣭࣭᷼❌̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ *DEMITRA*\n\n> *ACCESO DENEGADO*\n\n“Ah… qué desafortunado.”\n“Has sido… *baneado*.”\n\n“Me temo que los comandos ya no están a tu alcance.”\n“Quizás en otra vida tengas mejor suerte”');
         }
 
         if (cmd.rowner && !isROwner) {
