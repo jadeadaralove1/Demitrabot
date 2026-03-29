@@ -287,7 +287,7 @@ let handler = async (m, { conn }) => {
     const realTime = getRealTime(net.tz)
     const msgs     = pick(FAKE_MESSAGES)
 
-    const { key } = await conn.sendMessage(m.chat, { text: '⏳ Iniciando proceso...' }, { quoted: m })
+    const { key } = await conn.sendMessage(m.chat, { text: '𐄹 ۪ ׁ ⏳ᩚ̼ 𖹭̫ ▎ Iniciando proceso...' }, { quoted: m })
 
     const steps = [
         `💻 Iniciando intrusión contra ${shortName}...`,
@@ -316,7 +316,7 @@ let handler = async (m, { conn }) => {
     }
 
     const final =
-        `☠️ *HACK COMPLETADO — REPORTE FINAL*\n` +
+        `  ◜࣭࣭࣭࣭࣭᷼☠️̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  *HACK COMPLETADO*\n` +
         `━━━━━━━━━━━━━━━━━━\n` +
         `👤 *Objetivo:* ${shortName}\n` +
         `📱 *Número:* +${phone}\n\n` +
