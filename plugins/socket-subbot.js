@@ -48,8 +48,8 @@ let handler = async (m, { conn, args, command }) => {
   const isQR = command === 'qrs'
 
   const caption = isQR
-    ? '📸 Escanea el código QR para conectar tu Sub-Bot'
-    : '🔑 Usa este código para vincular tu Sub-Bot con tu número'
+    ? '◜࣭࣭࣭࣭࣭᷼📸̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Escanea el código QR para conectar tu Sub-Bot'
+    : '◜࣭࣭࣭࣭࣭᷼🗝️̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Usa este código para vincular tu Sub-Bot con tu número'
 
   commandFlags[m.sender] = true
 
