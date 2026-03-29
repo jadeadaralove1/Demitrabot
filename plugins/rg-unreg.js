@@ -10,7 +10,7 @@ let handler = async (m, { conn }) => {
     user.registered = false
     await database.save()
 
-    await m.reply('◜࣭࣭࣭࣭࣭᷼📝̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Tu registro ya no existe, Qué breve fue tu paso…\nEstaré esperando tu regreso )
+    await m.reply(' ◜࣭࣭࣭࣭࣭᷼📝̸̷ׁᮬᰰᩫ࣭࣭࣭࣭ Tu registro ya no existe, Qué breve fue tu paso…\nEstaré esperando tu regreso' )
     await m.react('🐞')
 }
 
