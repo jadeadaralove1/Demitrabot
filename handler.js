@@ -185,7 +185,11 @@ export const handler = async (m, conn, plugins) => {
                 : 'Sin resultados'
 
             return conn.sendMessage(m.chat, {
-                text: `El comando *(${prefix + commandName})* no existe.\n- Use el comando *${prefix}menu* para ver los comandos.\n\n*Similares:*\n${sugerencias}`
+                text: `𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎Oh dear… parece que ese comando *(${prefix + commandName})* simplemente no existe
+Quizás deberías intentar algo más… funcional.\n-
+Te sugiero amablemente usar #menu… a menos que disfrutes equivocarte, claro.
+
+> ◜࣭࣭࣭࣭࣭᷼🪼̸̷ׁᮬᰰᩫ࣭࣭࣭࣭  ¿Similares? Hmm… qué decepción, ni uno solo.\n${sugerencias}`
             }, { quoted: m })
         }
 
