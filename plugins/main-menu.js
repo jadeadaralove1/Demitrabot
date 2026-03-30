@@ -138,14 +138,12 @@ const handler = async (m, { conn }) => {
 
 ／ ㅤ ㅤ ◢ Descargas ㅤ ㅤ  攤䥵𓌙
 
-.ytsearch/search
-.tiktok/tt/tiktoksearch/ttsearch/tts
-.play2/mp4/ytmp4/ytvideo/playvideo
-.playmp3ytmp3ytaudio/playaudio
-.pinterest/pin
-.ig/instagram
-.apk/aptoide/apkdl
-
+• .tiktok / .tt / .tiktoksearch / .ttsearch / .tts
+• .play2
+• .play / .ytamp3
+• .pinterest / .pin
+• .apk / .apkd / .apkdl / .apks
+• .ig / .instagram
 ／ ㅤ ㅤ ◢  Game ㅤ ㅤ  攤䥵𓌙
 
 .top
