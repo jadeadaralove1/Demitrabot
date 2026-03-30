@@ -23,12 +23,12 @@ export const run = async (conn, update) => {
 
             let texto = `
    ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
-      `￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡`
+      \`￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡`\
 
 ʚֵ    ۟    ﹠  🌟̷̷ 𝖣𝖾𝗆𝗂𝗍𝗋𝖺 𝖻𝗈𝗍 𝖽𝖾 𝗐𝗁𝖺𝗍𝗌𝖺𝗉𝗉
                                 𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
 
-    `ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •`
+    \`ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •`\
 
 
 🪷  ㅤ＇   ❚ ❘ Saludos soy Demitra un bot disponible para cualquier momento, y será un placer recibirte en este lugar donde cada presencia cuenta.
