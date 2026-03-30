@@ -72,7 +72,7 @@ Next command. ::
         console.error('Error descargando imagen:', e)
     }
 
-           a    await conn.sendMessage(m.chat, {
+          await conn.sendMessage(m.chat, {
         text: regbot,
         contextInfo: {
             externalAdReply: {
