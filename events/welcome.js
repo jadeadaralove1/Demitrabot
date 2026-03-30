@@ -22,22 +22,22 @@ export const run = async (conn, update) => {
             const user = participant.split('@')[0]
 
             let texto = `
-   ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
-       ￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡
+ ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
+     ￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡
 
 ʚֵ    ۟    ﹠  🌟̷̷ 𝖣𝖾𝗆𝗂𝗍𝗋𝖺 𝖻𝗈𝗍 𝖽𝖾 𝗐𝗁𝖺𝗍𝗌𝖺𝗉𝗉
                                 𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
 
-     ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •
+    ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •
 
 
 🪷  ㅤ＇   ❚ ❘ Saludos soy Demitra un bot disponible para cualquier momento, y será un placer recibirte en este lugar donde cada presencia cuenta.
 
-᷼⥃ᩥ🤖ׅ֟፝͠ᩬ⃞    ﹗ Te doy la bienvenida; espero que tu paso por aquí resulte agradable y deje una buena impresión.
+᷼⥃ᩥ🤖ׅ֟፝͠ᩬ⃞ Te doy la bienvenida; espero que tu paso por aquí resulte agradable y deje una buena impresión.
 
-᷼⥃ᩥ🧝🏽‍♀️ׅ֟፝͠ᩬ⃞    ﹗Puedes tomar tu lugar, observar con calma y participar cuando lo desees… siempre hay algo interesante por descubrir.  Usa "#menu" para más información.
+> Puedes tomar tu lugar, observar con calma y participar cuando lo desees… siempre hay algo interesante por descubrir.  Usa "#menu" para más información.
 
-💎 ㅤ＇   ❚ ❘  @desc
+＇❚ ❘  @desc
 
 ㅤ୨ৎㅤ⏜︵⏜  ⪩ ⪨  ⏜︵⏜୨ৎ
 
