@@ -43,7 +43,7 @@ ${mentions}\n\n` +
 
 handler.help = ['invocar', 'invocar <texto>']
 handler.tags = ['group']
-handler.command = ['invocar', 'invocarwaifu']
+handler.command = ['invocar', 'invocar']
 handler.group = true
 handler.admin = true
 
