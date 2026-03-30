@@ -21,22 +21,27 @@ export const run = async (conn, update) => {
 
             const user = participant.split('@')[0]
 
-            let texto = `ᳮ ֶᦒ֒  ꩝꩝    𝅭 〔 *Wҽʅƈσɱҽ* 〕𝅭 ᡴ ᡴ ⣙⣙
+            let texto = `
+   ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
+      `￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡`
 
-              ⃧⠖⠖ ּ֪͘🩰⃝ۛ֗༌ 𐧼 _ᰫᰫ_
-𝔹𝚒𝚎𝚗𝚟𝚎𝚗𝚒𝚍𝚡 𝚜𝚎𝚊𝚜 𝚊 𝚎𝚜𝚝𝚎 𝚕𝚒𝚗𝚍𝚘 @group
-𝔼𝚜𝚙𝚎𝚛𝚘 𝚝𝚎 𝚍𝚒𝚟𝚒𝚎𝚛𝚝𝚊𝚜 𝚖𝚞𝚌𝚑𝚘 𝚓𝚞𝚗𝚝𝚘 𝚊 𝚗𝚘𝚜𝚘𝚝𝚛𝚘𝚜!!
+ʚֵ    ۟    ﹠  🌟̷̷ 𝖣𝖾𝗆𝗂𝗍𝗋𝖺 𝖻𝗈𝗍 𝖽𝖾 𝗐𝗁𝖺𝗍𝗌𝖺𝗉𝗉
+                                𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
 
-              ⃧⠖⠖ ּ֪͘🎐⃝ۛ֗༌ 𐧼 _ᰦᰦ᪶_
-𝕄𝚒 𝚗𝚘𝚖𝚋𝚛𝚎 𝚎𝚜 Demitra, 𝚎𝚜 𝚞𝚗 𝚙𝚕𝚊𝚌𝚎𝚛 𝚌𝚘𝚗𝚘𝚌𝚎𝚛𝚕𝚎.
-Para saber más de mí usa #menu
+    `ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •`
 
-              ⃧⠖⠖ ּ֪🪷͘⃝ۛ֗༌ 𐧼 _꧖꧖_
-@desc
 
-             
-              F͠๏г :: ˤˤ @user ᬁ
-                *©Adaraaa*`
+🪷  ㅤ＇   ❚ ❘ Saludos soy Demitra un bot disponible para cualquier momento, y será un placer recibirte en este lugar donde cada presencia cuenta.
+
+᷼⥃ᩥ🤖ׅ֟፝͠ᩬ⃞    ﹗ Te doy la bienvenida; espero que tu paso por aquí resulte agradable y deje una buena impresión.
+
+᷼⥃ᩥ🧝🏽‍♀️ׅ֟፝͠ᩬ⃞    ﹗Puedes tomar tu lugar, observar con calma y participar cuando lo desees… siempre hay algo interesante por descubrir.  Usa "#menu" para más información.
+
+💎 ㅤ＇   ❚ ❘  @desc
+
+ㅤ୨ৎㅤ⏜︵⏜  ⪩ ⪨  ⏜︵⏜୨ৎ
+
+𝅗ㅤׄㅤㅤִㅤㅤ♡⃘◌ㅤAdara : ownerㅤׄㅤ·ㅤִㅤִ`
 
             texto = texto
                 .replace(/@desc/g, metadata?.desc || 'Sin descripción')
