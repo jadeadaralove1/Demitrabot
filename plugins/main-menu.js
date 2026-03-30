@@ -161,7 +161,7 @@ const handler = async (m, { conn }) => {
             body: `${totalCmds} comandos disponibles`,
             mediaType: 1,
             renderLargerThumbnail: true,
-            thumbnailUrl: 'https://files.catbox.moe/abcd.jpg',
+            thumbnailUrl: 'https://causas-files.vercel.app/fl/9axd.jpg',
             sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
         }
     }
