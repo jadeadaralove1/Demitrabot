@@ -25,9 +25,9 @@ export const run = async (conn, update) => {
  ๑     𓈒   ⃝🔔   ׅ   🄳ιɳɠ 🄳σɳɠ       ᮫     ୨୧
      ￮   ֹ 🦭⃞    ࣭    𝖡𝗂𝖾𝗇𝗏𝖾𝗇𝗂𝖽𝗑 ✨ྀ  .  ♡
 
-   ʚֵ    ۟    ﹠  🌟̷̷  𝖧𝖺𝗉𝗉𝗒 ࣪ 🪼  ּ    𝅄  𔘓
+   ʚֵ    ۟    ﹠   𝖧𝖺𝗉𝗉𝗒 ࣪ 🌟̷̷  ּ    𝅄  𔘓
 
-    ଓ     ๋    ࣪   🌻⃞      ࣭   @user ࣪      ੭     •
+    ଓ     ๋    ࣪   🌻⃞   ࣭   @user ࣪      ੭     •
 
 
 🪷  ㅤ＇   ❚ ❘ Saludos soy Demitra un bot disponible para cualquier momento, y será un placer recibirte en este lugar donde cada presencia cuenta.
