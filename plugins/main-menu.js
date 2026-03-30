@@ -154,11 +154,8 @@ const handler = async (m, { conn }) => {
 
         await conn.sendMessage(m.chat, {
     text: menuTexto,
-    mentions: [m.sender],
     contextInfo: {
         mentionedJid: [m.sender],
-        isForwarded: true,
-        forwardingScore: 999,
         externalAdReply: {
             title: 'DEMITRA - Menú Principal',
             body: `${totalCmds} comandos disponibles`,
