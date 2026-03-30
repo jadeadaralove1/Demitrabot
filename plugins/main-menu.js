@@ -175,7 +175,7 @@ ${cmds.map(c => `  ꕦ ${c}`).join('\n')}
                     mediaType: 1,
                     thumbnail: buffer,
                     renderLargerThumbnail: true,
-                    sourceUrl: 'https://whatsapp.com/channel/0029Vb6p68rF6smrH4Jeay3Y'
+                    sourceUrl: 'https://whatsapp.com/channel/0029VbBvrmwC1Fu5SYpbBE2A'
                 }
             }
         }, { quoted: m })
