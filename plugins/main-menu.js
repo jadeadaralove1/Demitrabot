@@ -63,50 +63,49 @@ const handler = async (m, { conn }) => {
 
 ＿＿／ ㅤㅤ ◢Principal + Main. ㅤㅤ  攤䥵𓌙
 
-.report / .reporte / .sug / .suggest
-.status / .estado
-.ping / .p
-.invite / .invitar
-.menu / .help / .allmenu
+.reg
+.unreg
+.perfil
 
-＿＿／ ㅤ ㅤ     Perfil   ㅤ  攤䥵𓌙
+＿＿／ ㅤ ㅤ   Herramientas   ㅤ  攤䥵𓌙
 
-.profile / .perfil
-.setpasatiempo / .sethobby
-.setgenre
-.setdescription / .setdesc
-.marry / .casarse
-.divorce
-.delpasatiempo / .removehobby
-.delgenre
-.deldescription / .deldesc
-.afk
 
+.nable/feature/función
+.ping/p
+.menu/help/ayuda
+.chatgpt
+.bot
+.modoadmin/soloadmins
+.status/estado
+.traducir/translate/tr
+.ver/read/readvo
+.pp/foto/profilepic/ppuser
+.iq
+.inactivos
+.horario/hora/time/times
+.hd/upscale/mejorar
+.hack
+.flux
+.cdn
+.join
 ＿＿／ ㅤ ㅤ ◢Groupㅤ ㅤ  攤䥵𓌙
 
-.todos / .invocar / .tagall
-.setwarnlimit
-.warn
-.delwarn
-.setgpdesc
-.setgpbanner
-.setgpname
-.revoke / .restablecer
-.welcome / .bienvenida
-.goodbye / .despedida
-.alerts / .alertas
-.antilink / .antienlaces / .antilinks
-.adminonly / .onlyadmin (on, off)
-.link
-.kick
-.hidetag / .tag
-.gp / .groupinfo
-.promote
+.promote/promover
+.open/abrir
+.hidetag/notificar/notify/tag/anuncio
+.link/enlace
+.invocar
 .demote
-.count / .mensajes / .messages / .msgcount
-.open / .abrir
-.close / .closet / .cerrar
-.bot
+.close/cerrar
+.antilink
+.advertencias/warnlist
+.advertir/advertencia/warn/warning
+.gp/groupinfo
+.delwarn/unwarn/quitarad
+.mute
+.unmute
+.kick/echar/hechar/sacar/ban
+.leave/salir
 
 ＿＿／ ㅤ ㅤ ◢Stickers ㅤ ㅤ  攤䥵𓌙
 
@@ -115,26 +114,10 @@ const handler = async (m, { conn }) => {
 .brat
 .bratv
 .emojimix
-.qc
-
-＿＿／ ㅤ ㅤ ⊿ Utils ㅤ ㅤ  攤䥵𓌙
-.get / .fetch
-.pfp / .getpic
-.tourl
-.hd / .enhance / .remini
-.inspect / .inspeccionar
-.ver / .read / .readvo
-.say / .decir
-.translate / .trad / .traducir
+.qq
 
 ＿＿／ ㅤ ㅤ ◢Socket+ㅤ ㅤ  攤䥵𓌙
-
-.join / .unir
-.leave
-.logout
-.reload
-.self
-.codes / .qrs
+.codes/qr
 
 ／ ㅤ ㅤ ◢ Descargas ㅤ ㅤ  攤䥵𓌙
 
@@ -144,30 +127,18 @@ const handler = async (m, { conn }) => {
 • .pinterest / .pin
 • .apk / .apkd / .apkdl / .apks
 • .ig / .instagram
-／ ㅤ ㅤ ◢  Game ㅤ ㅤ  攤䥵𓌙
 
-.top
-.sopa/sopadeletras
-.rastrear
-.ppt
-.pedido
-.orcado/ahorcado
-.meme
-.formarpareja5
-.formarpareja/formarparejas
-.bot/demi
-.confesar/confesiones
-.adivina/adivinaemoji
-.acertijo/riddle
+／ ㅤ ㅤ ◢  Ownerㅤ ㅤ  攤䥵𓌙
+
+.update
+.restart/reiniciar
+.lid/mylid/tulid
+.get
+.owner/creatora/dueña
+.autoadmin
+.kickall
 
 ／ ㅤ ㅤ ◢ Expresiones ㅤ ㅤ  攤䥵𓌙
-
-.hug/abrazo
-.happy/feliz
-.angry/enojado
-.airkiss/lanzarbeso/lanzarkiss
-.dance/bailar
-.hi/saludos
 
 > ㅤㅤㅤㅤ@𝗉𝗋𝗈𝗑𝗂𝗆𝗈ㅤㅤ𔘓
 
