@@ -45,16 +45,9 @@ let handler = async (m, { conn }) => {
 ╭───〔 👤 PERFIL 〕───⬣
 │
 │ 🧑 Nombre: ${user.name}
-│ ⚥ Género: ${user.genre}
-│ 💬 Desc: ${user.description || 'Sin descripción'}
-│ 🎯 Pasatiempo: ${user.pasatiempo || 'No definido'}
-│ 💞 ${estadoCivil}: ${pareja}
 │
 │ 📊 Nivel: ${user.level}
 │ ✨ XP: ${user.exp}
-│ 🏆 Rank: #${rank}
-│
-│ 💰 ${currency}: ${user.coins + user.bank}
 │
 ╰──────────────⬣
 `.trim()
