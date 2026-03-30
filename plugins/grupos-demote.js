@@ -4,7 +4,7 @@ const handler = async (m, { conn }) => {
     let who = m.mentionedJid?.[0] || m.quoted?.sender || null;
     if (!who) {
       return await conn.sendMessage(m.chat, {
-        text: '*ᐛ❄* Menciona a alguien para quitarle sus *privilegios altos.*'
+        text: '𐄹 ۪ ׁ 🦭ᩚ̼ 𖹭̫ ▎Menciona a alguien para quitarle sus *privilegios altos.*'
       }, { quoted: m });
     }
 
@@ -20,13 +20,13 @@ const handler = async (m, { conn }) => {
 
     if (who === groupMetadata.owner) {
       return await conn.sendMessage(m.chat, {
-        text: '🎁 No puedo quitarle admin al creador del grupo.'
+        text: '𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎No puedo quitarle admin al creador del grupo.'
       }, { quoted: m });
     }
 
     if (who === conn.user.jid) {
       return await conn.sendMessage(m.chat, {
-        text: '🎄 No puedo quitarme admin yo misma.'
+        text: '𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎No puedo quitarme admin yo misma.'
       }, { quoted: m });
     }
 
@@ -40,7 +40,7 @@ const handler = async (m, { conn }) => {
 
   } catch (e) {
     console.error(e);
-    await conn.sendMessage(m.chat, { text: '⚠️ Ocurrió un error al intentar degradar al admin.' }, { quoted: m });
+    await conn.sendMessage(m.chat, { text: '𐄹 ۪ ׁ ⚠️ᩚ̼ 𖹭̫ ▎ Ocurrió un error al intentar degradar al admin.' }, { quoted: m });
   }
 };
 
