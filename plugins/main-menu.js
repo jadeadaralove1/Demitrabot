@@ -159,7 +159,16 @@ ${cmds.map(c => `  ꕦ ${c}`).join('\n')}
 
 ㅤㅤㅤㅤ𝖼𝗋𝖾𝖺𝗍𝗈𝗋ㅤㅤ𔘓ㅤㅤ𝗌𝗁𝖾𝗋𝗒`.trim()
 
-        const response = await fetch('https://causas-files.vercel.app/fl/9vs2.jpg')
+if (!global._menuSent) global._menuSent = new Set()
+
+if (global._menuSent.has(m.key.id)) return
+global._menuSent.add(m.key.id)
+
+setTimeout(() => {
+    global._menuSent.delete(m.key.id)
+}, 5000)
+        
+         const response = await fetch('https://causas-files.vercel.app/fl/9vs2.jpg')
 const buffer = await response.buffer()
 
 await conn.sendMessage(m.chat, {
