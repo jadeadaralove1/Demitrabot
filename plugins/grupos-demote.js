@@ -13,7 +13,7 @@ const handler = async (m, { conn }) => {
 
     if (!participant || !participant.admin) {
       return await conn.sendMessage(m.chat, {
-        text: `☃️ *@${who.split('@')[0]}* no es administrador del grupo!`,
+        text: `𐄹 ۪ ׁ 🧝🏽‍♀️ᩚ̼ 𖹭̫ ▎*@${who.split('@')[0]}* no es administrador del grupo!`,
         mentions: [who]
       }, { quoted: m });
     }
@@ -34,7 +34,7 @@ const handler = async (m, { conn }) => {
     await conn.groupParticipantsUpdate(m.chat, [who], 'demote');
 
     await conn.sendMessage(m.chat, {
-      text: `*@${who.split('@')[0]}* ya no es admin`,
+      text: `ׄㅤֶָ֪ㅤಟㅤׄ    𝗦𝖾 𝖺 𝗊𝗎𝗶𝘁𝗮𝗱𝗈 *@${who.split('@')[0]}* 𝖽𝖾 𝖺𝗱𝗺𝗂𝗇. ✖️`,
       mentions: [who]
     }, { quoted: m });
 
